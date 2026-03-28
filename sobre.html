@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sobre o LabEpi — Laboratório de Epidemiologia</title>
+<meta name="description" content="Conheça o Laboratório de Epidemiologia: a primeira plataforma brasileira dedicada a epidemiologia aplicada. Nossa história, missão, equipe e valores."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:      #10135c;
+  --navy-mid:  #0e1150;
+  --navy-light:#181b6e;
+  --mint:      #99ffcd;
+  --mint-dim:  rgba(153,255,205,0.12);
+  --mint-dim2: rgba(153,255,205,0.06);
+  --blue-light:#8cb4ff;
+  --amber:     #ffd36e;
+  --white:     #ffffff;
+  --white-90:  rgba(255,255,255,0.9);
+  --white-70:  rgba(255,255,255,0.7);
+  --white-40:  rgba(255,255,255,0.4);
+  --white-15:  rgba(255,255,255,0.15);
+  --white-08:  rgba(255,255,255,0.08);
+  --white-04:  rgba(255,255,255,0.04);
+  --body-text: #c5cde8;
+  --muted:     #7a85b8;
+  --border:    rgba(255,255,255,0.1);
+  --border-mint: rgba(153,255,205,0.2);
+  --radius:    16px;
+  --radius-sm: 10px;
+  --font:      'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── LAYOUT ─── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+/* ─── BUTTONS ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--mint); color: var(--navy);
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 14px 28px; border-radius: 100px; border: none;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: #afffda; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(153,255,205,0.3); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--white);
+  font-family: var(--font); font-size: 14px; font-weight: 600;
+  padding: 13px 26px; border-radius: 100px;
+  border: 1.5px solid var(--white-40);
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--mint); color: var(--mint); }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--mint); font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: gap 0.2s;
+}
+.link-arrow:hover { gap: 10px; }
+
+/* ─── HEADER ─── */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; padding: 0 40px;
+  max-width: 1300px; margin: 0 auto;
+  background: rgba(16,19,92,0.88);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-mark {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--mint-dim); border: 1px solid var(--border-mint);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+}
+.logo-wordmark { display: flex; flex-direction: column; line-height: 1; }
+.logo-lab { font-size: 11px; font-weight: 400; color: var(--white-70); letter-spacing: 0.05em; text-transform: uppercase; }
+.logo-epi { font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a { color: var(--white-70); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.15s; }
+nav a:hover, nav a.active { color: var(--white); }
+.nav-cta { margin-left: 8px; }
+
+/* ─── SECTION COMMONS ─── */
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mint); margin-bottom: 16px;
+}
+.section-tag::after { content: ''; display: block; width: 28px; height: 1px; background: var(--mint); opacity: 0.5; }
+.section-title {
+  font-size: clamp(26px, 3.5vw, 42px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.03em; color: var(--white);
+}
+.section-title .mint { color: var(--mint); }
+.section-body { font-size: 17px; color: var(--body-text); line-height: 1.7; max-width: 560px; }
+.sep { border-top: 1px solid var(--border); }
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  position: relative; padding: 140px 0 80px;
+  overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.page-hero-bg svg {
+  position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+  opacity: 0.06;
+}
+.page-hero-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(153,255,205,0.08) 0%, transparent 70%);
+  top: -200px; right: -150px; pointer-events: none;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--muted); margin-bottom: 32px;
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--mint); }
+.breadcrumb-sep { opacity: 0.4; }
+.breadcrumb-current { color: var(--mint); font-weight: 600; }
+.page-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--mint-dim); border: 1px solid var(--border-mint);
+  border-radius: 100px; padding: 6px 16px; margin-bottom: 28px;
+  font-size: 12px; font-weight: 600; color: var(--mint);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.page-hero-eyebrow span {
+  width: 6px; height: 6px; background: var(--mint);
+  border-radius: 50%; flex-shrink: 0;
+  animation: blink 2.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.page-hero h1 {
+  font-size: clamp(36px, 5vw, 60px); font-weight: 800;
+  line-height: 1.06; letter-spacing: -0.03em;
+  color: var(--white); margin-bottom: 24px; max-width: 700px;
+}
+.page-hero h1 .mint { color: var(--mint); }
+.page-hero-body {
+  font-size: 18px; line-height: 1.65; color: var(--body-text);
+  max-width: 580px; margin-bottom: 40px;
+}
+.page-hero-stats {
+  display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+}
+.hero-stat-item {}
+.hero-stat-val {
+  font-size: 32px; font-weight: 900; color: var(--mint);
+  letter-spacing: -0.04em; line-height: 1;
+}
+.hero-stat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.hero-stat-divider { width: 1px; height: 40px; background: var(--border); }
+
+/* ─── ORIGEM ─── */
+.origem { padding: 100px 0; position: relative; overflow: hidden; }
+.origem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.origem-content p { color: var(--body-text); font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+.origem-content p:last-child { margin-bottom: 0; }
+.origem-content .section-title { margin-bottom: 24px; }
+.origem-visual {
+  position: relative;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.timeline-item {
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.timeline-left {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  flex-shrink: 0;
+}
+.timeline-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--mint-dim); border: 2px solid var(--border-mint);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--mint); font-size: 14px; font-weight: 800; flex-shrink: 0;
+}
+.timeline-dot.active {
+  background: var(--mint); color: var(--navy);
+}
+.timeline-line {
+  width: 2px; flex: 1; min-height: 32px;
+  background: linear-gradient(to bottom, var(--border-mint), transparent);
+  margin: 4px 0;
+}
+.timeline-body {
+  background: var(--white-04); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 18px 20px; flex: 1;
+  transition: border-color 0.2s;
+}
+.timeline-body:hover { border-color: var(--border-mint); }
+.timeline-year {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mint); margin-bottom: 6px;
+}
+.timeline-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.timeline-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.origem-bg-deco {
+  position: absolute; left: -180px; top: 50%;
+  transform: translateY(-50%); width: 400px; height: 400px;
+  opacity: 0.05; pointer-events: none;
+}
+
+/* ─── MISSÃO / VISÃO / VALORES ─── */
+.mvv { padding: 100px 0; }
+.mvv-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+.mvv-header .section-tag { justify-content: center; }
+.mvv-header .section-tag::after { display: none; }
+.mvv-header .section-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--mint); opacity: 0.5; }
+.mvv-header .section-title { margin-bottom: 16px; }
+.mvv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 48px; }
+.mvv-card {
+  background: var(--white-04); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px 28px;
+  position: relative; overflow: hidden; transition: all 0.25s;
+}
+.mvv-card:hover { background: rgba(255,255,255,0.07); border-color: var(--border-mint); transform: translateY(-4px); }
+.mvv-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--mint); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.mvv-card:hover::before { transform: scaleX(1); }
+.mvv-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  background: var(--mint-dim); border: 1px solid var(--border-mint);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--mint); margin-bottom: 24px;
+}
+.mvv-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mint); margin-bottom: 12px;
+}
+.mvv-card h3 {
+  font-size: 20px; font-weight: 800; color: var(--white);
+  letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.2;
+}
+.mvv-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+/* valores pills */
+.valores-row {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin-top: 8px;
+}
+.valor-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white-04); border: 1px solid var(--border);
+  border-radius: 100px; padding: 8px 18px;
+  font-size: 13px; font-weight: 600; color: var(--white-90);
+  transition: all 0.2s;
+}
+.valor-pill:hover { border-color: var(--border-mint); color: var(--mint); }
+.valor-pill-dot { width: 6px; height: 6px; background: var(--mint); border-radius: 50%; }
+
+/* ─── MANIFESTO ─── */
+.manifesto {
+  padding: 100px 0; position: relative;
+  background: linear-gradient(135deg, rgba(153,255,205,0.04) 0%, rgba(140,180,255,0.03) 100%);
+}
+.manifesto-inner {
+  max-width: 840px; margin: 0 auto; text-align: center;
+}
+.manifesto-inner .section-tag { justify-content: center; }
+.manifesto-inner .section-tag::after { display: none; }
+.manifesto-inner .section-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--mint); opacity: 0.5; }
+.manifesto-quote {
+  font-size: clamp(22px, 3vw, 32px); font-weight: 700; line-height: 1.45;
+  color: var(--white); letter-spacing: -0.02em; margin: 32px 0;
+}
+.manifesto-quote .mint { color: var(--mint); }
+.manifesto-body {
+  font-size: 16px; color: var(--body-text); line-height: 1.8;
+  max-width: 680px; margin: 0 auto 48px;
+}
+.manifesto-pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  text-align: left; margin-top: 48px;
+}
+.pillar-card {
+  background: var(--white-08); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px 20px;
+  transition: all 0.2s;
+}
+.pillar-card:hover { border-color: var(--border-mint); }
+.pillar-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mint); margin-bottom: 10px;
+}
+.pillar-card h4 {
+  font-size: 15px; font-weight: 700; color: var(--white);
+  margin-bottom: 8px; line-height: 1.25;
+}
+.pillar-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── EQUIPE ─── */
+.equipe { padding: 100px 0; }
+.equipe-header { max-width: 600px; margin-bottom: 56px; }
+.equipe-header .section-title { margin-bottom: 16px; }
+.equipe-header p { font-size: 16px; color: var(--body-text); line-height: 1.7; }
+.equipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.membro-card {
+  background: var(--white-04); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: all 0.25s; position: relative;
+}
+.membro-card:hover { border-color: var(--border-mint); transform: translateY(-4px); box-shadow: 0 20px 56px rgba(0,0,0,0.3); }
+.membro-foto {
+  aspect-ratio: 1/1;
+  background: linear-gradient(145deg, var(--navy-light), #1a1e7a);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  position: relative; overflow: hidden;
+}
+.membro-foto-initial {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--mint-dim); border: 2px solid var(--border-mint);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 800; color: var(--mint);
+}
+.membro-foto-deco {
+  position: absolute; bottom: -30px; right: -30px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(153,255,205,0.1), transparent 70%);
+  pointer-events: none;
+}
+.membro-equity {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(16,19,92,0.88); border: 1px solid var(--border-mint);
+  border-radius: 100px; padding: 4px 10px;
+  font-size: 10px; font-weight: 700; color: var(--mint); letter-spacing: 0.06em;
+}
+.membro-body { padding: 24px; }
+.membro-card h3 { font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 4px; }
+.membro-role { font-size: 12px; font-weight: 600; color: var(--mint); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+.membro-bio { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+.membro-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.membro-tag {
+  font-size: 10px; font-weight: 700; color: var(--body-text);
+  background: var(--white-08); border: 1px solid var(--border);
+  padding: 3px 10px; border-radius: 100px; letter-spacing: 0.04em;
+}
+
+/* ─── IMPACTO ─── */
+.impacto { padding: 100px 0; }
+.impacto-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 56px; }
+.impacto-numbers {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px;
+}
+.impacto-card {
+  background: var(--white-04); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px 24px; text-align: center;
+  transition: all 0.2s;
+}
+.impacto-card:hover { border-color: var(--border-mint); background: rgba(255,255,255,0.07); }
+.impacto-val {
+  font-size: 40px; font-weight: 900; color: var(--mint);
+  letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px;
+}
+.impacto-lbl { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.impacto-bar {
+  background: var(--mint-dim); border: 1px solid var(--border-mint);
+  border-radius: var(--radius); padding: 32px 40px;
+  display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
+}
+.impacto-bar-text { flex: 1; min-width: 240px; }
+.impacto-bar-text h3 {
+  font-size: 20px; font-weight: 800; color: var(--white);
+  letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.impacto-bar-text p { font-size: 14px; color: var(--body-text); line-height: 1.6; }
+.impacto-bar-logos {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.ref-badge {
+  background: var(--white-08); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 16px;
+  font-size: 12px; font-weight: 700; color: var(--white-90);
+  letter-spacing: 0.02em;
+}
+
+/* ─── CTA FINAL ─── */
+.cta-final {
+  padding: 100px 0; position: relative; overflow: hidden;
+}
+.cta-final-inner {
+  background: linear-gradient(135deg, var(--navy-light) 0%, #1e2380 100%);
+  border: 1px solid var(--border-mint); border-radius: 24px;
+  padding: 72px 64px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-final-inner::before {
+  content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mint), transparent);
+}
+.cta-final-glow {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(153,255,205,0.08) 0%, transparent 70%);
+  top: -200px; left: 50%; transform: translateX(-50%);
+  pointer-events: none;
+}
+.cta-final-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mint); margin-bottom: 24px;
+}
+.cta-final-eyebrow::before, .cta-final-eyebrow::after {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--mint); opacity: 0.5;
+}
+.cta-final h2 {
+  font-size: clamp(28px, 4vw, 48px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.03em; color: var(--white); margin-bottom: 20px;
+}
+.cta-final h2 .mint { color: var(--mint); }
+.cta-final p { font-size: 17px; color: var(--body-text); line-height: 1.7; max-width: 520px; margin: 0 auto 40px; }
+.cta-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.cta-micro { font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+/* ─── FOOTER ─── */
+footer { padding: 72px 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 52px; }
+.footer-brand {}
+.footer-tagline { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 280px; margin-bottom: 28px; margin-top: 18px; }
+.social-row { display: flex; gap: 10px; }
+.social-btn {
+  width: 36px; height: 36px; background: var(--white-08); border: 1px solid var(--border);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 11px; font-weight: 800; text-decoration: none;
+  transition: all 0.2s;
+}
+.social-btn:hover { background: var(--mint-dim); border-color: var(--border-mint); color: var(--mint); }
+.footer-col h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--white-70); margin-bottom: 18px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 28px; border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 16px;
+}
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { color: var(--muted); text-decoration: none; }
+.footer-legal a:hover { color: var(--white); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  nav { display: none; }
+  .origem-grid, .impacto-header { grid-template-columns: 1fr; gap: 48px; }
+  .mvv-grid, .manifesto-pillars, .equipe-grid { grid-template-columns: 1fr; }
+  .impacto-numbers { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .cta-final-inner { padding: 48px 32px; }
+  .page-hero-stats { gap: 24px; }
+}
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .header-inner { padding: 0 20px; }
+  .impacto-numbers { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .impacto-bar { padding: 24px; flex-direction: column; gap: 24px; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:none } }
+.page-hero .container > * { animation: fadeUp 0.65s ease forwards; opacity: 0; }
+.breadcrumb { animation-delay: 0.05s }
+.page-hero-eyebrow { animation-delay: 0.1s }
+.page-hero h1 { animation-delay: 0.2s }
+.page-hero-body { animation-delay: 0.35s }
+.page-hero-stats { animation-delay: 0.5s }
+</style>
+</head>
+<body>
+
+<!-- ──────────────────────────────────────────
+  HEADER
+────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+
+    <!-- LOGO — substitua pelo <img> com base64 do labepi_v4.html -->
+    <a href="index.html" class="logo">
+      <div class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#99ffcd" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <path d="M10 2 A8 8 0 0 1 18 10" stroke="#99ffcd" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-wordmark">
+        <span class="logo-lab">Laboratório de</span>
+        <span class="logo-epi">Epidemiologia</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="sobre.html" class="active">Sobre</a>
+      <a href="index.html#cursos">Cursos</a>
+      <a href="index.html#consultoria">Consultoria</a>
+      <a href="#">Blog</a>
+    </nav>
+
+    <a href="index.html#consultoria" class="btn-primary nav-cta">Fale com a gente</a>
+  </div>
+</header>
+
+
+<!-- ──────────────────────────────────────────
+  PAGE HERO
+────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
+      <circle cx="900" cy="300" r="350" stroke="#99ffcd" stroke-width="1" stroke-dasharray="6 6"/>
+      <circle cx="900" cy="300" r="250" stroke="#99ffcd" stroke-width="1" stroke-dasharray="6 6"/>
+      <circle cx="900" cy="300" r="150" stroke="#99ffcd" stroke-width="1"/>
+      <path d="M900 -50 A350 350 0 0 1 1250 300" stroke="#99ffcd" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Sobre</span>
+    </div>
+
+    <div class="page-hero-eyebrow">
+      <span></span>
+      Quem somos
+    </div>
+
+    <h1>
+      A ciência epidemiológica<br/>
+      ao alcance de <span class="mint">quem quer aprender.</span>
+    </h1>
+
+    <p class="page-hero-body">
+      O Laboratório de Epidemiologia nasceu para fechar uma lacuna que pesquisadores e estudantes de saúde sempre enfrentaram: conteúdo técnico rigoroso que também é acessível, prático e aplicável na vida real.
+    </p>
+
+    <div class="page-hero-stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-val">2,3M</div>
+        <div class="hero-stat-lbl">estudantes de saúde<br/>no Brasil</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val">GBD</div>
+        <div class="hero-stat-lbl">maior estudo epi<br/>do mundo · The Lancet</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val">150+</div>
+        <div class="hero-stat-lbl">países cobertos<br/>pelos nossos estudos</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val">0</div>
+        <div class="hero-stat-lbl">concorrentes diretos<br/>em epi aplicada no BR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  NOSSA ORIGEM
+────────────────────────────────────────── -->
+<section class="origem sep">
+  <svg class="origem-bg-deco" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <circle cx="200" cy="200" r="180" stroke="#99ffcd" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <circle cx="200" cy="200" r="120" stroke="#99ffcd" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <circle cx="200" cy="200" r="60" stroke="#99ffcd" stroke-width="1.5"/>
+    <path d="M200 20 A180 180 0 0 1 380 200" stroke="#99ffcd" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.6"/>
+  </svg>
+
+  <div class="container">
+    <div class="origem-grid">
+
+      <div class="origem-content">
+        <div class="section-tag">Nossa história</div>
+        <h2 class="section-title">
+          Nascemos de uma<br/>
+          <span class="mint">frustração legítima.</span>
+        </h2>
+        <p>
+          Lucas Santos estava treinando pesquisadores em um dos estudos mais relevantes da saúde global — o <em>Global Burden of Disease</em> — quando percebeu um padrão consistente: profissionais brilhantes, com formação sólida em medicina ou enfermagem, chegavam sem saber como planejar um estudo epidemiológico do zero.
+        </p>
+        <p>
+          O problema não era falta de inteligência. Era falta de uma ponte entre o que os cursos de graduação ensinam — teoria e nomenclatura — e o que a prática científica real exige: decisões metodológicas, análise crítica de vieses, interpretação de dados e comunicação de resultados.
+        </p>
+        <p>
+          O LabEpi nasceu para ser essa ponte. Não mais um repositório de slides. Uma plataforma de formação real, baseada em evidências, construída por quem trabalha no front da pesquisa epidemiológica global.
+        </p>
+      </div>
+
+      <div class="origem-visual">
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-dot">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-year">Antes de 2026</div>
+            <div class="timeline-title">O gap identificado</div>
+            <div class="timeline-desc">Lucas percebe sistematicamente a falta de formação metodológica prática nos pesquisadores em formação que treinava no GBD.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-dot active">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7 L6 10 L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-body" style="border-color: var(--border-mint);">
+            <div class="timeline-year">2026 — Fundação</div>
+            <div class="timeline-title">O LabEpi vai ao ar</div>
+            <div class="timeline-desc">Lançamento do site, blog com SEO, consultoria como primeiro produto e construção da audiência orgânica.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-dot" style="opacity:0.5;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 3 L7 11 M3 7 L11 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="timeline-line" style="opacity:0.3;"></div>
+          </div>
+          <div class="timeline-body" style="opacity:0.6;">
+            <div class="timeline-year">2027 — Próximos passos</div>
+            <div class="timeline-title">Cursos em vídeo + comunidade</div>
+            <div class="timeline-desc">Lançamento dos primeiros cursos estruturados e expansão para uma comunidade ativa de pesquisadores.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-dot" style="opacity:0.35;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="3" fill="currentColor" opacity="0.5"/></svg>
+            </div>
+          </div>
+          <div class="timeline-body" style="opacity:0.4;">
+            <div class="timeline-year">2028 — Visão</div>
+            <div class="timeline-title">Plataforma de referência nacional</div>
+            <div class="timeline-desc">Trilhas de formação completas, parcerias institucionais e impacto mensurável na produção científica brasileira.</div>
+          </div>
+        </div>
+
+      </div><!-- /origem-visual -->
+    </div><!-- /origem-grid -->
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  MISSÃO / VISÃO / VALORES
+────────────────────────────────────────── -->
+<section class="mvv sep">
+  <div class="container">
+    <div class="mvv-header">
+      <div class="section-tag">Fundamentos</div>
+      <h2 class="section-title">Missão, <span class="mint">visão e valores.</span></h2>
+      <p class="section-body" style="margin: 16px auto 0; text-align:center;">Os princípios que guiam cada decisão do LabEpi — do conteúdo que publicamos ao produto que construímos.</p>
+    </div>
+
+    <div class="mvv-grid">
+
+      <!-- Missão -->
+      <div class="mvv-card">
+        <div class="mvv-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="11" cy="11" r="3" fill="currentColor"/>
+            <path d="M11 3 L11 7 M11 15 L11 19 M3 11 L7 11 M15 11 L19 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="mvv-label">Missão</div>
+        <h3>Democratizar a formação em epidemiologia aplicada</h3>
+        <p>Tornar o conhecimento metodológico rigoroso acessível a todo pesquisador em formação no Brasil — sem concessões ao rigor científico e sem barreiras desnecessárias ao aprendizado.</p>
+      </div>
+
+      <!-- Visão -->
+      <div class="mvv-card">
+        <div class="mvv-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M1 11 C5 4 8 2 11 2 C14 2 17 4 21 11 C17 18 14 20 11 20 C8 20 5 18 1 11Z" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="mvv-label">Visão</div>
+        <h3>Ser a referência nacional em ciência epidemiológica</h3>
+        <p>Em 2028, o LabEpi é a primeira plataforma que qualquer estudante ou pesquisador brasileiro busca quando precisa aprender a fazer ciência de verdade — da hipótese à publicação.</p>
+      </div>
+
+      <!-- Valores -->
+      <div class="mvv-card">
+        <div class="mvv-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2 L13.5 8.5 L20.5 8.5 L14.9 12.7 L17.1 19.5 L11 15.5 L4.9 19.5 L7.1 12.7 L1.5 8.5 L8.5 8.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="mvv-label">Valores</div>
+        <h3>Os princípios que não negociamos</h3>
+        <p>Rigor sem pedantismo. Acessibilidade sem superficialidade. Evidência acima de opinião. Transparência sobre o que sabemos — e o que ainda não sabemos.</p>
+      </div>
+
+    </div>
+
+    <!-- Valor pills -->
+    <div class="valores-row">
+      <div class="valor-pill"><span class="valor-pill-dot"></span>Evidência científica</div>
+      <div class="valor-pill"><span class="valor-pill-dot"></span>Rigor metodológico</div>
+      <div class="valor-pill"><span class="valor-pill-dot"></span>Didática prática</div>
+      <div class="valor-pill"><span class="valor-pill-dot"></span>Transparência</div>
+      <div class="valor-pill"><span class="valor-pill-dot"></span>Aplicabilidade real</div>
+      <div class="valor-pill"><span class="valor-pill-dot"></span>Autonomia do aprendiz</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  MANIFESTO
+────────────────────────────────────────── -->
+<section class="manifesto sep">
+  <div class="container">
+    <div class="manifesto-inner">
+      <div class="section-tag">Nosso manifesto</div>
+
+      <div class="manifesto-quote">
+        "A epidemiologia não é disciplina de pós-graduação.<br/>
+        É a <span class="mint">linguagem da saúde pública.</span><br/>
+        E toda linguagem pode ser ensinada."
+      </div>
+
+      <p class="manifesto-body">
+        Acreditamos que a maioria dos pesquisadores em formação no Brasil não tem déficit de inteligência — tem déficit de acesso. Acesso a conteúdo que conecte teoria e prática, que cite fontes reais, que mostre o caminho entre uma ideia de pesquisa e um artigo publicado. O LabEpi existe para ser esse acesso.
+      </p>
+
+      <div class="manifesto-pillars">
+
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
+          <h4>Ciência com citação, sempre</h4>
+          <p>Todo dado que publicamos tem fonte verificável. Nada de "estudos mostram" sem mostrar quais estudos.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
+          <h4>Metodologia que você usa amanhã</h4>
+          <p>Não ensinamos o que é um estudo de coorte — ensinamos como montar, executar e analisar um.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
+          <h4>Comunidade, não audiência</h4>
+          <p>Queremos pesquisadores que se ajudam, que questionam e que produzem ciência juntos — não consumidores passivos de conteúdo.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  EQUIPE
+────────────────────────────────────────── -->
+<section class="equipe sep">
+  <div class="container">
+
+    <div class="equipe-header">
+      <div class="section-tag">Quem faz acontecer</div>
+      <h2 class="section-title">Um time pequeno com<br/><span class="mint">foco cirúrgico.</span></h2>
+      <p>Cada pessoa no LabEpi tem uma responsabilidade clara e um papel insubstituível. Ninguém faz de tudo — todo mundo faz muito bem o que é seu.</p>
+    </div>
+
+    <div class="equipe-grid">
+
+      <!-- Lucas -->
+      <div class="membro-card">
+        <div class="membro-foto">
+          <div class="membro-foto-initial">L</div>
+          <div class="membro-foto-deco"></div>
+        </div>
+        <div class="membro-body">
+          <h3>Lucas Santos</h3>
+          <div class="membro-role">Epidemiologista · Fundador</div>
+          <p class="membro-bio">Epidemiologista com atuação ativa no Global Burden of Disease (GBD/IHME), o maior estudo epidemiológico do mundo, publicado em The Lancet. É o responsável pelo conteúdo científico do LabEpi — artigos, aulas e consultorias.</p>
+          <div class="membro-tags">
+            <span class="membro-tag">Epidemiologia</span>
+            <span class="membro-tag">GBD / IHME</span>
+            <span class="membro-tag">Metodologia</span>
+            <span class="membro-tag">The Lancet</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Olegas -->
+      <div class="membro-card">
+        <div class="membro-foto">
+          <div class="membro-foto-initial">O</div>
+          <div class="membro-foto-deco"></div>
+        </div>
+        <div class="membro-body">
+          <h3>Olegas Oligar</h3>
+          <div class="membro-role">Cofundador · Plataforma &amp; Estratégia</div>
+          <p class="membro-bio">Responsável pela plataforma digital do LabEpi — do site ao conteúdo que chega até você. Garante que o conhecimento científico produzido pelo Lucas seja encontrável, acessível e bem apresentado.</p>
+          <div class="membro-tags">
+            <span class="membro-tag">Plataforma</span>
+            <span class="membro-tag">Estratégia digital</span>
+            <span class="membro-tag">Conteúdo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- André -->
+      <div class="membro-card">
+        <div class="membro-foto">
+          <div class="membro-foto-initial">A</div>
+          <div class="membro-foto-deco"></div>
+        </div>
+        <div class="membro-body">
+          <h3>André</h3>
+          <div class="membro-role">Design &amp; Produção Visual</div>
+          <p class="membro-bio">Responsável pela identidade visual e produção audiovisual do LabEpi. Garante que cada material — do slide de aula ao vídeo publicado — comunique com clareza e coerência visual.</p>
+          <div class="membro-tags">
+            <span class="membro-tag">Design</span>
+            <span class="membro-tag">Vídeo</span>
+            <span class="membro-tag">Identidade visual</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  IMPACTO E CONTEXTO
+────────────────────────────────────────── -->
+<section class="impacto sep">
+  <div class="container">
+
+    <div class="impacto-header">
+      <div>
+        <div class="section-tag">Contexto e impacto</div>
+        <h2 class="section-title">Números que<br/><span class="mint">justificam existir.</span></h2>
+      </div>
+      <p class="section-body">O mercado de formação em saúde no Brasil é imenso e mal atendido. Estes são os dados que nos motivam.</p>
+    </div>
+
+    <div class="impacto-numbers">
+      <div class="impacto-card">
+        <div class="impacto-val">2,3M</div>
+        <div class="impacto-lbl">estudantes de saúde ativos no Brasil</div>
+      </div>
+      <div class="impacto-card">
+        <div class="impacto-val">150+</div>
+        <div class="impacto-lbl">países com dados no estudo GBD</div>
+      </div>
+      <div class="impacto-card">
+        <div class="impacto-val">0</div>
+        <div class="impacto-lbl">concorrentes diretos em epi aplicada no Brasil</div>
+      </div>
+      <div class="impacto-card">
+        <div class="impacto-val">#1</div>
+        <div class="impacto-lbl">posicionamento-alvo em epidemiologia aplicada no Google BR</div>
+      </div>
+    </div>
+
+    <div class="impacto-bar">
+      <div class="impacto-bar-text">
+        <h3>Conteúdo baseado nas melhores fontes da área</h3>
+        <p>Todo artigo, aula e material do LabEpi cita fontes primárias de alto impacto — garantindo que o pesquisador aprenda com a mesma base que a academia usa.</p>
+      </div>
+      <div class="impacto-bar-logos">
+        <div class="ref-badge">The Lancet</div>
+        <div class="ref-badge">PubMed / MEDLINE</div>
+        <div class="ref-badge">GBD / IHME</div>
+        <div class="ref-badge">SciELO BR</div>
+        <div class="ref-badge">BVS</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  ENCERRAMENTO SUAVE
+────────────────────────────────────────── -->
+<section class="cta-final sep">
+  <div class="container">
+    <div class="cta-final-inner">
+      <div class="cta-final-glow" aria-hidden="true"></div>
+
+      <div class="cta-final-eyebrow">Conheça nosso trabalho</div>
+
+      <h2>
+        O LabEpi é construído<br/>
+        <span class="mint">aula a aula, artigo a artigo.</span>
+      </h2>
+
+      <p>Explore o blog, acompanhe os conteúdos que publicamos semanalmente ou entre em contato se quiser conversar sobre pesquisa.</p>
+
+      <div class="cta-actions">
+        <a href="#" class="btn-primary">Ver o Blog</a>
+        <a href="index.html#consultoria" class="btn-secondary">Fale com a gente →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+  FOOTER
+────────────────────────────────────────── -->
+<footer class="sep">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="#99ffcd" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M10 2 A8 8 0 0 1 18 10" stroke="#99ffcd" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="logo-wordmark">
+            <span class="logo-lab">Laboratório de</span>
+            <span class="logo-epi">Epidemiologia</span>
+          </div>
+        </a>
+        <p class="footer-tagline">A primeira plataforma brasileira dedicada exclusivamente à epidemiologia aplicada. Rigor científico e didática prática, para quem quer fazer ciência de verdade.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="index.html#cursos">Cursos</a></li>
+          <li><a href="index.html#consultoria">Consultoria</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul class="footer-links">
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Glossário Epi</a></li>
+          <li><a href="#">Referências</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Laboratório de Epidemiologia. Todos os direitos reservados.</span>
+      <div class="footer-legal">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
