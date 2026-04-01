@@ -24,3 +24,7 @@ Thumbs.db
 .vscode/settings.json
 *.swp
 *.swo
+
+# Astro
+dist/
+.astro/

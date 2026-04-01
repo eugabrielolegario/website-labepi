@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const now = new Date();
+  const posts = await getCollection('blog', ({ data }) => !data.draft && data.date <= now);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function readingTime(body: string) {
+  const words = body.split(/\s+/).length;
+  return Math.ceil(words / 200);
+}
+---
+<BaseLayout title={`${post.data.title} — LabEpi`} description={post.data.description}>
+
+<article class="blog-post">
+  <div class="blog-post-hero">
+    {post.data.cover && (
+      <div class="blog-post-cover" aria-hidden="true">
+        <img src={post.data.cover} alt="" />
+      </div>
+    )}
+    <div class="page-hero-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
+        <circle cx="900" cy="300" r="350" stroke="#99ffcd" stroke-width="1" stroke-dasharray="6 6" opacity="0.5"/>
+        <circle cx="900" cy="300" r="250" stroke="#99ffcd" stroke-width="1" stroke-dasharray="6 6" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/blog/">Blog</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">{post.data.tags[0] ?? 'Artigo'}</span>
+      </div>
+      <div class="blog-post-tags">
+        {post.data.tags.map((tag) => (
+          <span class="blog-cat" style="position:static; margin-right:8px;">{tag}</span>
+        ))}
+      </div>
+      <h1 class="blog-post-title">{post.data.title}</h1>
+      <p class="blog-post-desc">{post.data.description}</p>
+      <div class="blog-post-meta">
+        <span>{post.data.author}</span>
+        <span>·</span>
+        <span>{formatDate(post.data.date)}</span>
+        <span>·</span>
+        <span>{readingTime(post.body)} min de leitura</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container blog-post-body">
+    <Content />
+    <div class="blog-post-footer">
+      <a href="/blog/" class="link-arrow" style="font-size:15px;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 3l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar para o blog
+      </a>
+    </div>
+  </div>
+</article>
+
+</BaseLayout>
+
+<style is:global>
+/* ── Blog post body styles ── */
+.blog-post-hero {
+  position: relative;
+  padding: 120px 0 60px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 70% 50% at 70% 0%, rgba(140,180,255,0.06) 0%, transparent 55%), var(--navy);
+}
+.blog-post-tags { margin-bottom: 20px; }
+.blog-post-title {
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+.blog-post-desc {
+  font-size: 18px;
+  color: var(--body-text);
+  line-height: 1.65;
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+.blog-post-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+.blog-post-body {
+  padding-top: 64px;
+  padding-bottom: 80px;
+  max-width: 720px;
+}
+.blog-post-body h2 {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin: 48px 0 16px;
+  line-height: 1.2;
+}
+.blog-post-body h3 {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: var(--white);
+  margin: 36px 0 12px;
+}
+.blog-post-body p {
+  font-size: 17px;
+  color: var(--body-text);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.blog-post-body ul, .blog-post-body ol {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+.blog-post-body li {
+  font-size: 17px;
+  color: var(--body-text);
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+.blog-post-body strong { color: var(--white); font-weight: 700; }
+.blog-post-body em { color: var(--mint); font-style: italic; }
+.blog-post-body a { color: var(--mint); text-decoration: underline; text-underline-offset: 3px; }
+.blog-post-body a:hover { color: #afffda; }
+.blog-post-body code {
+  background: var(--white-08);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 14px;
+  color: var(--mint);
+}
+.blog-post-body blockquote {
+  border-left: 3px solid var(--mint);
+  padding: 16px 24px;
+  margin: 28px 0;
+  background: var(--mint-dim);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--white-90);
+  font-style: italic;
+}
+.blog-post-cover {
+  position: absolute; inset: 0; z-index: 0;
+}
+.blog-post-cover img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  opacity: 0.18; filter: saturate(0.6);
+}
+.blog-post-hero .container { position: relative; z-index: 1; }
+.blog-post-footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+/* Imagens no corpo */
+.blog-post-body img {
+  width: 100%; border-radius: var(--radius);
+  border: 1px solid var(--border); margin: 28px 0; display: block;
+}
+.blog-post-body figure {
+  margin: 32px 0;
+}
+.blog-post-body figcaption {
+  font-size: 13px; color: var(--muted);
+  text-align: center; margin-top: 10px;
+}
+/* Tabelas */
+.blog-post-body table {
+  width: 100%; border-collapse: collapse; margin: 32px 0;
+  font-size: 15px;
+}
+.blog-post-body thead tr {
+  border-bottom: 2px solid var(--border-mint);
+}
+.blog-post-body th {
+  text-align: left; padding: 12px 16px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--mint);
+}
+.blog-post-body td {
+  padding: 12px 16px; color: var(--body-text);
+  border-bottom: 1px solid var(--border);
+}
+.blog-post-body tr:last-child td { border-bottom: none; }
+.blog-post-body tr:hover td { background: var(--white-04); }
+/* Separador horizontal */
+.blog-post-body hr {
+  border: none; border-top: 1px solid var(--border); margin: 40px 0;
+}
+/* Heading 4 */
+.blog-post-body h4 {
+  font-size: 17px; font-weight: 700; color: var(--white-90);
+  margin: 28px 0 8px;
+}
+/* Listas aninhadas */
+.blog-post-body li > ul, .blog-post-body li > ol {
+  margin: 8px 0 4px;
+}
+/* Callout / nota */
+.blog-post-body .callout {
+  background: rgba(140,180,255,0.07); border: 1px solid rgba(140,180,255,0.2);
+  border-radius: var(--radius-sm); padding: 18px 24px; margin: 28px 0;
+  font-size: 15px; color: var(--body-text);
+}
+.blog-post-body .callout strong { color: var(--blue-light); }
+/* SVG inline */
+.blog-post-body svg.chart {
+  width: 100%; margin: 32px 0; display: block;
+}
+</style>

@@ -1,0 +1,690 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Laboratório de Epidemiologia — Epidemiologia Aplicada no Brasil">
+
+<section class="hero">
+
+  <!-- Animated background rings -->
+  <div class="hero-bg-rings" aria-hidden="true">
+    <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-rings-svg">
+      <circle cx="400" cy="400" r="360" stroke="#99ffcd" stroke-width="1" stroke-dasharray="10 8" opacity="0.06"/>
+      <circle cx="400" cy="400" r="280" stroke="white" stroke-width="1" stroke-dasharray="10 8" opacity="0.05"/>
+      <circle cx="400" cy="400" r="200" stroke="#99ffcd" stroke-width="1" stroke-dasharray="10 8" opacity="0.04"/>
+      <path d="M400 40 A360 360 0 0 1 760 400" stroke="#99ffcd" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.2"/>
+      <path d="M400 120 A280 280 0 0 0 40 400" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.12"/>
+    </svg>
+  </div>
+
+  <!-- Dynamic background glows -->
+  <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-3" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-center">
+      <div class="hero-eyebrow">
+        <span></span>
+        O único hub de epidemiologia aplicada no Brasil
+      </div>
+
+      <h1>
+        Seu caminho para a<br/>
+        pós-graduação e a <span class="mint">pesquisa científica.</span>
+      </h1>
+
+      <p class="hero-body">
+        O Laboratório de Epidemiologia é uma plataforma educacional especializada em epidemiologia aplicada, metodologia de pesquisa e estatística. Do delineamento à publicação, com rigor técnico e linguagem acessível.
+      </p>
+
+      <div class="hero-lancet">
+        Fundado por colaborador do Global Burden of Disease
+      </div>
+
+      <div class="hero-actions">
+        <a href="/sobre/" class="btn-secondary">Conheça o LabEpi</a>
+        <a href="#lead-magnet" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M1 10v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Baixe o Guia Grátis
+        </a>
+      </div>
+      <p class="hero-micro">Gratuito · Sem spam · Cancele quando quiser</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SOBRE / MISSÃO ── -->
+<section class="missao sep" id="sobre">
+
+  <svg class="missao-bg" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <circle cx="200" cy="200" r="180" stroke="#99ffcd" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <circle cx="200" cy="200" r="130" stroke="#99ffcd" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <circle cx="200" cy="200" r="80" stroke="#99ffcd" stroke-width="1.5"/>
+    <path d="M200 20 A180 180 0 0 1 380 200" stroke="#99ffcd" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+  </svg>
+
+  <div class="container">
+    <div class="missao-full">
+      <div class="missao-content">
+        <div class="section-tag">Quem somos</div>
+        <h2 class="section-title">
+          Não somos mais um<br/>
+          curso de <span class="mint">metodologia.</span>
+        </h2>
+        <p>O Laboratório de Epidemiologia é a primeira plataforma brasileira dedicada exclusivamente a epidemiologia aplicada. Enquanto a maioria dos cursos ensina conteúdos <em>rasos</em>, nós nos dedicamos ao ensino de material <em>aprofundado</em> e com rigor científico.</p>
+        <p>Combinamos rigor técnico com didática prática. Todo conteúdo publicado é baseado em evidências científicas reais, com citações verificáveis e referências nas principais bases de dados da área da saúde.</p>
+        <div class="missao-numbers">
+          <div class="num-card">
+            <div class="num-val">2,3M</div>
+            <div class="num-label">estudantes e pesquisadores de saúde no Brasil</div>
+          </div>
+          <div class="num-card">
+            <div class="num-val">600+</div>
+            <div class="num-label">citações em artigos feitos por integrantes do LabEpi</div>
+          </div>
+          <div class="num-card">
+            <div class="num-val">150+</div>
+            <div class="num-label">países impactados pelos estudos GBD onde participamos</div>
+          </div>
+          <div class="num-card">
+            <div class="num-val">GBD</div>
+            <div class="num-label">maior estudo epidemiológico do mundo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── O QUE OFERECEMOS (HUB) ── -->
+<section class="hub sep">
+  <div class="container">
+    <div class="hub-header">
+      <div class="section-tag">O que oferecemos</div>
+      <h2 class="section-title" style="text-align:center;">Um hub completo de<br/><span class="mint">formação em pesquisa.</span></h2>
+      <p class="section-body" style="text-align:center;margin:16px auto 0;">Conteúdo gratuito, materiais de aprofundamento, cursos em vídeo e consultoria personalizada, tudo em um único lugar.</p>
+    </div>
+    <div class="hub-grid">
+
+      <a href="/blog/" class="hub-card">
+        <div class="hub-card-deco"></div>
+        <div class="hub-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 18 C4 18 5 10 8 10 C11 10 11 14 14 7 C17 0 18 5 20 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="hub-card-label">Conteúdo gratuito</div>
+        <h3>Blog e Artigos</h3>
+        <p>Artigos aprofundados baseados em evidências, delineamentos, estatística, busca bibliográfica, metodologia e pós-graduação. Publicamos conteúdo útil semanalmente.</p>
+        <span class="link-arrow">
+          Ler os artigos
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="#cursos" class="hub-card">
+        <div class="hub-card-deco"></div>
+        <div class="hub-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 8l5 3-5 3V8Z" fill="currentColor"/></svg>
+        </div>
+        <div class="hub-card-label">Formação em vídeo</div>
+        <h3>Cursos</h3>
+        <p>Do mini-curso de fundamentos ao curso completo avançado. Gravados por Lucas Santos, com casos práticos da área da saúde. Aprenda no seu ritmo.</p>
+        <span class="link-arrow">
+          Ver cursos
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="#" class="hub-card">
+        <div class="hub-card-deco"></div>
+        <div class="hub-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="2" width="12" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 7h4M7 10h4M7 13h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 8h2a2 2 0 012 2v8a2 2 0 01-2 2H9a2 2 0 01-2-2v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="hub-card-label">Materiais de apoio</div>
+        <h3>Ebooks Temáticos</h3>
+        <p>Guias práticos sobre temas específicos: busca bibliográfica, testes estatísticos, projetos de pesquisa, revisão sistemática. Conteúdo denso, direto ao ponto.</p>
+        <span class="link-arrow">
+          Ver ebooks
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a href="/consultoria/" class="hub-card">
+        <div class="hub-card-deco"></div>
+        <div class="hub-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 11l1.5 1.5L20 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hub-card-label">Atendimento personalizado</div>
+        <h3>Consultoria Metodológica</h3>
+        <p>Suporte direto com Lucas Santos para revisar delineamento, análise estatística e estrutura de artigo. Para quem precisa de rigor técnico aplicado ao seu projeto.</p>
+        <span class="link-arrow">
+          Saber mais
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── AUTORIDADE — LUCAS ── -->
+<section class="autoridade sep">
+  <div class="container">
+    <div class="autoridade-grid">
+      <div class="foto-frame" aria-label="Foto de Lucas Santos">
+        <img class="foto-img" src="/assets/images/lucas-santos.jpg" alt="Foto de Lucas Santos" />
+        <div class="foto-badge">
+          <div class="badge-dot"></div>
+          <div class="badge-text">
+            <strong>Publicado no The Lancet</strong>
+            Colaborador Sênior — Global Burden of Disease
+          </div>
+        </div>
+      </div>
+
+      <div class="autoridade-content">
+        <div class="section-tag">Quem está por trás</div>
+        <h2 class="section-title">Aprenda com quem publicou no <span class="mint">The Lancet.</span></h2>
+        <p>Lucas Santos é epidemiologista, clínico e supervisor clínico. É cofundador e a autoridade técnica do Laboratório de Epidemiologia.</p>
+        <p>Sua participação no Global Burden of Disease — o maior estudo epidemiológico colaborativo do mundo, coordenado pelo IHME da Universidade de Washington — é a credencial que sustenta cada conteúdo que o LabEpi produz. Quando Lucas ensina metodologia, ele fala com a experiência de quem fez pesquisa em escala global.</p>
+        <ul class="cred-items">
+          <li><span class="cred-icon">◉</span> Colaborador Sênior do GBD — IHME / Universidade de Washington</li>
+          <li><span class="cred-icon">◉</span> Publicação no The Lancet — referência em saúde pública global</li>
+          <li><span class="cred-icon">◉</span> Epidemiologista clínico e supervisor clínico ativo</li>
+          <li><span class="cred-icon">◉</span> Responsável pela revisão técnica de todo conteúdo do LabEpi</li>
+        </ul>
+        <a href="/sobre/" class="link-arrow">
+          Conheça a história do LabEpi
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIFERENCIAIS ── -->
+<section class="diferenciais sep">
+  <div class="container">
+    <div class="diff-header">
+      <div>
+        <div class="section-tag">Por que o LabEpi</div>
+        <h2 class="section-title">O que nos torna<br/><span class="mint">diferentes.</span></h2>
+      </div>
+      <p class="section-body" style="max-width:380px;">Não é sobre o que ensinamos — é sobre como ensinamos e de onde falamos.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 14 C4 14 5 8 7 8 C9 8 9 12 11 6 C13 0 14 4 16 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Foco no Como Fazer</h3>
+        <p>Não ensinamos só o que é um estudo de coorte — ensinamos como montar, executar e publicar um.</p>
+        <span class="diff-tag">Abordagem 100% prática</span>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L2 16h14L9 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 10V7M9 13v-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Urgência Real Resolvida</h3>
+        <p>Prazo de qualificação chegando? A dúvida metodológica que está travando o projeto tem solução aqui.</p>
+        <span class="diff-tag">Do problema à solução</span>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M9 5v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Autoridade GBD</h3>
+        <p>Participação real no maior estudo epidemiológico do planeta. Credencial que não se fabrica.</p>
+        <span class="diff-tag">IHME</span>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 9h8M5 6h8M5 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Baseado em Evidências</h3>
+        <p>Todo artigo tem citações verificáveis. PubMed, SciELO, GBD, CAPES, DataSUS. Nunca inventamos dados.</p>
+        <span class="diff-tag">Rigor científico</span>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>O Pesquisador no Centro</h3>
+        <p>Cada decisão começa com: isso resolve um problema real de quem está tentando fazer ciência?</p>
+        <span class="diff-tag">Acolhimento + rigor</span>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h4M12 9h4M9 2v4M9 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Conteúdo em Evolução</h3>
+        <p>Blog semanal, novos módulos e materiais atualizados com os dados mais recentes das principais bases científicas.</p>
+        <span class="diff-tag">Sempre atualizado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARA QUEM É ── -->
+<section class="para-quem sep">
+  <div class="container">
+    <div class="para-quem-header">
+      <div class="section-tag">Para quem é</div>
+      <h2 class="section-title">O LabEpi foi feito para quem<br/>está <span class="mint">tentando fazer ciência.</span></h2>
+      <p class="section-body" style="margin-top:16px;">Independente da etapa da carreira — o que importa é ter um projeto de pesquisa e querer fazê-lo com rigor.</p>
+    </div>
+    <div class="pq-grid">
+      <div class="pq-card">
+        <span class="pq-num">01</span>
+        <div class="pq-tag">Graduação · Iniciação Científica</div>
+        <h3>Está começando na pesquisa</h3>
+        <p>Entrou na IC ou começou um projeto sem base em metodologia. Precisa de direção clara — do delineamento ao passo a passo — sem pressupor que você já sabe os fundamentos.</p>
+        <a href="/blog/" class="link-arrow">
+          Ver conteúdo para iniciantes
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="pq-card">
+        <span class="pq-num">02</span>
+        <div class="pq-tag">Mestrado · Doutorado</div>
+        <h3>Está no meio da pós-graduação</h3>
+        <p>Tem prazo, orientador exigente e dúvida metodológica específica que está travando o projeto. Precisa de solução direta — sem enrolação — antes que o prazo aperte.</p>
+        <a href="#lead-magnet" class="link-arrow">
+          Baixar o guia gratuito
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="pq-card">
+        <span class="pq-num">03</span>
+        <div class="pq-tag">Pesquisador Ativo</div>
+        <h3>Quer rigor para publicar</h3>
+        <p>Já publicou alguns artigos, mas está num projeto mais complexo e quer garantir que o delineamento e a análise passam pela revisão por pares de um periódico de alto fator de impacto.</p>
+        <a href="/consultoria/" class="link-arrow">
+          Ver a consultoria
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEAD MAGNET ── -->
+<section class="lead-magnet sep" id="lead-magnet">
+  <div class="container">
+    <div class="lead-grid">
+      <div class="lead-visual">
+        <div class="pdf-cover">
+          <div class="pdf-tag">Laboratório de Epidemiologia · Guia Gratuito</div>
+          <h4>Guia Prático de Delineamento de Estudo</h4>
+          <div class="pdf-line"></div>
+          <div class="pdf-author">
+            <strong>Lucas Santos</strong>
+            Colaborador GBD · The Lancet
+          </div>
+          <div class="pdf-glow"></div>
+        </div>
+      </div>
+      <div class="lead-content">
+        <div class="section-tag">Comece por aqui</div>
+        <h2 class="section-title">Baixe grátis e aprenda a<br/>escolher o método <span class="mint">certo.</span></h2>
+        <p>Um guia direto ao ponto com os principais delineamentos de estudo em saúde: quando usar cada um, como justificar a escolha e quais erros evitar. Escrito por quem participou do maior estudo epidemiológico do mundo.</p>
+        <ul class="lead-bullets">
+          <li>Transversal, coorte, caso-controle e ensaio clínico explicados na prática</li>
+          <li>Como justificar a escolha do delineamento no projeto e no artigo</li>
+          <li>Erros mais comuns que comprometem a aprovação na qualificação</li>
+          <li>Passo a passo para aplicar no seu projeto hoje</li>
+        </ul>
+        <div class="lead-form">
+          <input type="email" class="lead-input" placeholder="Seu melhor e-mail"/>
+          <button class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M1 10v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Quero o Guia
+          </button>
+        </div>
+        <p class="lead-micro">Gratuito · Sem spam · Cancele quando quiser</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOG ── -->
+<section class="blog sep">
+  <div class="container">
+    <div class="blog-header">
+      <div>
+        <div class="section-tag">Blog</div>
+        <h2 class="section-title">Conteúdo gratuito,<br/>toda semana.</h2>
+      </div>
+      <a href="/blog/" class="link-arrow" style="flex-shrink:0">
+        Ver todos os artigos
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="blog-grid">
+      <a href="/blog/como-escolher-delineamento/" class="blog-card">
+        <div class="blog-thumb">
+          <div class="blog-thumb-inner">Delineamento</div>
+          <span class="blog-cat">Delineamento</span>
+        </div>
+        <div class="blog-body">
+          <h3>Como escolher o delineamento certo para o seu estudo em 5 passos</h3>
+          <p>Transversal, coorte ou caso-controle? A escolha errada compromete todo o projeto. Veja o método para decidir com segurança.</p>
+          <div class="blog-meta"><span>8 min</span><span>·</span><span>Mar 2026</span></div>
+        </div>
+      </a>
+      <a href="/blog/qual-teste-estatistico-usar/" class="blog-card">
+        <div class="blog-thumb">
+          <div class="blog-thumb-inner">Estatística</div>
+          <span class="blog-cat">Estatística</span>
+        </div>
+        <div class="blog-body">
+          <h3>Qual teste estatístico usar? O guia definitivo para pesquisadores em formação</h3>
+          <p>Qui-quadrado, Mann-Whitney, regressão logística — quando aplicar cada um e como interpretar os resultados.</p>
+          <div class="blog-meta"><span>12 min</span><span>·</span><span>Mar 2026</span></div>
+        </div>
+      </a>
+      <a href="/blog/primeiros-30-dias-mestrado/" class="blog-card">
+        <div class="blog-thumb">
+          <div class="blog-thumb-inner">Pós-Graduação</div>
+          <span class="blog-cat">Pós-Graduação</span>
+        </div>
+        <div class="blog-body">
+          <h3>O que fazer nos primeiros 30 dias do mestrado para não se perder</h3>
+          <p>Aprovado no programa mas sem saber por onde começar? Este guia mostra as prioridades reais do primeiro trimestre.</p>
+          <div class="blog-meta"><span>10 min</span><span>·</span><span>Fev 2026</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONSULTORIA ── -->
+<section class="consultoria sep" id="consultoria">
+  <div class="container">
+    <div class="consultoria-grid">
+      <div class="consultoria-content">
+        <div class="section-tag">Consultoria Metodológica</div>
+        <h2 class="section-title">Suporte direto com quem<br/>publicou no <span class="mint">The Lancet.</span></h2>
+        <p>Para pesquisadores que precisam garantir o rigor metodológico do projeto — sem comprometer o prazo. Lucas trabalha diretamente no seu estudo.</p>
+        <ul class="entregaveis">
+          <li><span class="e-icon">◈</span> Revisão de delineamento de estudo</li>
+          <li><span class="e-icon">◈</span> Análise estatística aplicada ao seu caso</li>
+          <li><span class="e-icon">◈</span> Estrutura de artigo para submissão em periódico</li>
+          <li><span class="e-icon">◈</span> Suporte pós-sessão por e-mail</li>
+        </ul>
+        <a href="/consultoria/" class="btn-primary">
+          Quero a consultoria
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="consultoria-callout">
+        <div class="callout-eyebrow">Como funciona</div>
+        <div class="callout-title">Triagem prévia para garantir o melhor atendimento.</div>
+        <div class="callout-body">Preencha o formulário descrevendo sua dúvida metodológica e etapa do projeto. Lucas analisa pessoalmente cada solicitação e retorna em até 48h para confirmar a disponibilidade e alinhar o escopo da consultoria.</div>
+        <a href="/consultoria/#triagem" class="btn-secondary" style="width:100%;justify-content:center;">
+          Preencher o formulário de triagem
+        </a>
+        <p class="callout-meta">Vagas limitadas · Lucas retorna em até 48h · Pagamento via PIX ou cartão</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CURSOS ── -->
+<section class="cursos sep" id="cursos">
+  <div class="container">
+    <div class="cursos-header">
+      <div class="em-breve">
+        <svg width="6" height="6" viewBox="0 0 6 6" fill="#ffd36e"><circle cx="3" cy="3" r="3"/></svg>
+        Em breve · 2026
+      </div>
+      <div class="section-tag" style="justify-content:center;">Cursos &amp; Formação</div>
+      <h2 class="section-title" style="text-align:center;">Do <span class="mint">fundamento</span> à publicação.</h2>
+      <p class="section-body" style="text-align:center;margin:16px auto 0;">Cursos completos em vídeo, gravados por Lucas Santos, com casos práticos da área da saúde.</p>
+    </div>
+    <div class="slider-wrap" id="cursosSlider">
+      <button class="slider-btn" id="cursosPrev" aria-label="Anterior">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="slider-viewport">
+        <div class="slider-track" id="cursosTrack">
+
+          <div class="curso-card">
+            <div class="curso-thumb">
+              <img loading="lazy" src="/assets/images/curso-pos-graduacao.jpg" alt="Descomplicando a Pós-Graduação" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <span class="curso-cat">Pós-graduação</span>
+            </div>
+            <div class="curso-body">
+              <h3>Descomplicando a Pós-Graduação</h3>
+              <p>Guia prático para navegar na pós-graduação com segurança. Entenda como estruturar seu projeto, organizar estudos e desenvolver pensamento científico desde os primeiros passos.</p>
+              <div class="curso-footer">
+                <span style="font-size:12px;color:var(--muted);">Módulo introdutório</span>
+                <a href="#cursos-espera" class="link-arrow" style="font-size:13px;">Avise-me <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="curso-card">
+            <div class="curso-thumb">
+              <img loading="lazy" src="/assets/images/curso-metodologia.jpg" alt="Descomplicando a Metodologia de Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <span class="curso-cat">Metodologia</span>
+            </div>
+            <div class="curso-body">
+              <h3>Descomplicando a Metodologia de Pesquisa</h3>
+              <p>Aprenda, de forma clara e aplicada, como construir perguntas de pesquisa, escolher métodos adequados e estruturar estudos científicos com rigor e lógica.</p>
+              <div class="curso-footer">
+                <span style="font-size:12px;color:var(--muted);">Módulo avançado</span>
+                <a href="#cursos-espera" class="link-arrow" style="font-size:13px;">Avise-me <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="curso-card">
+            <div class="curso-thumb">
+              <img loading="lazy" src="/assets/images/curso-estatistica.jpg" alt="Descomplicando a Estatística em Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <span class="curso-cat">Estatística</span>
+            </div>
+            <div class="curso-body">
+              <h3>Descomplicando a Estatística em Pesquisa</h3>
+              <p>Do p-valor ao intervalo de confiança — entenda cada teste estatístico aplicado à sua realidade, com exemplos reais de estudos publicados no PubMed e SciELO.</p>
+              <div class="curso-footer">
+                <span style="font-size:12px;color:var(--muted);">Módulo avançado</span>
+                <a href="#cursos-espera" class="link-arrow" style="font-size:13px;">Avise-me <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="curso-card">
+            <div class="curso-thumb">
+              <img loading="lazy" src="/assets/images/curso-gbd.jpg" alt="Descomplicando o GBD e a Epidemiologia Global" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <span class="curso-cat">GBD · Epidemiologia Global</span>
+            </div>
+            <div class="curso-body">
+              <h3>Descomplicando o GBD e a Epidemiologia Global</h3>
+              <p>Entenda o maior estudo epidemiológico do mundo, como usar seus dados no Brasil e como aplicar métricas como DALY, YLL e YLD na sua pesquisa.</p>
+              <div class="curso-footer">
+                <span style="font-size:12px;color:var(--muted);">Módulo especializado</span>
+                <a href="#cursos-espera" class="link-arrow" style="font-size:13px;">Avise-me <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="slider-btn" id="cursosNext" aria-label="Próximo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="slider-dots" id="cursosDots"></div>
+    <div class="espera-area" id="cursos-espera">
+      <p>Entre na lista de espera — acesso antecipado e condições especiais de lançamento.</p>
+      <div class="espera-form">
+        <input type="email" class="espera-input" placeholder="Seu melhor e-mail"/>
+        <button class="btn-primary">Avise-me quando abrir</button>
+      </div>
+      <p class="espera-micro">Gratuito · Sem compromisso</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EBOOKS ── -->
+<section class="ebooks sep">
+  <div class="container">
+    <div class="ebooks-header">
+      <div class="section-tag">Materiais Gratuitos</div>
+      <h2 class="section-title">E-books e guias para<br/><span class="mint">acelerar sua pesquisa.</span></h2>
+      <p class="section-body" style="text-align:center;margin:16px auto 0;">Baixe gratuitamente. Conteúdo baseado em evidências, revisado com dados do GBD, PubMed e CAPES.</p>
+    </div>
+
+    <div class="ebook-slider-wrap">
+      <button class="slider-btn" id="ebookPrev" aria-label="Anterior">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="ebook-slider-viewport">
+        <div class="ebook-slider-track" id="ebookTrack">
+
+          <div class="ebook-card">
+            <div class="ebook-cover">
+              <img loading="lazy" src="/assets/images/ebook-epidemiologia.jpg" alt="Guia de Epidemiologia Aplicada" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <div class="ebook-cover-label">Guia de Epidemiologia Aplicada</div>
+            </div>
+            <div class="ebook-body">
+              <div class="ebook-cat">Epidemiologia</div>
+              <div class="ebook-title">Guia de Epidemiologia Aplicada</div>
+              <div class="ebook-desc">Conceitos fundamentais de epidemiologia com aplicações práticas para pesquisadores em formação.</div>
+              <a href="#" class="ebook-cta">Ver na Hotmart <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+
+          <div class="ebook-card">
+            <div class="ebook-cover">
+              <img loading="lazy" src="/assets/images/ebook-metodologia.jpg" alt="Manual de Metodologia de Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <div class="ebook-cover-label">Manual de Metodologia de Pesquisa</div>
+            </div>
+            <div class="ebook-body">
+              <div class="ebook-cat">Metodologia</div>
+              <div class="ebook-title">Manual de Metodologia de Pesquisa</div>
+              <div class="ebook-desc">Como estruturar perguntas PICO, escolher o delineamento certo e justificar suas escolhas metodológicas.</div>
+              <a href="#" class="ebook-cta">Ver na Hotmart <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+
+          <div class="ebook-card">
+            <div class="ebook-cover">
+              <img loading="lazy" src="/assets/images/ebook-estatistica.jpg" alt="Estatística para Pesquisadores de Saúde" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <div class="ebook-cover-label">Estatística para Pesquisadores de Saúde</div>
+            </div>
+            <div class="ebook-body">
+              <div class="ebook-cat">Estatística</div>
+              <div class="ebook-title">Estatística para Pesquisadores de Saúde</div>
+              <div class="ebook-desc">Testes estatísticos, p-valor, intervalos de confiança e tamanho amostral explicados sem enrolação.</div>
+              <a href="#" class="ebook-cta">Ver na Hotmart <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+
+          <div class="ebook-card">
+            <div class="ebook-cover">
+              <img loading="lazy" src="/assets/images/ebook-gbd.jpg" alt="Como Usar Dados do GBD na Sua Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <div class="ebook-cover-label">Como Usar Dados do GBD na Sua Pesquisa</div>
+            </div>
+            <div class="ebook-body">
+              <div class="ebook-cat">GBD · Dados Globais</div>
+              <div class="ebook-title">Como Usar Dados do GBD na Sua Pesquisa</div>
+              <div class="ebook-desc">Acesse, filtre e cite corretamente os dados do Global Burden of Disease para publicações nacionais e internacionais.</div>
+              <a href="#" class="ebook-cta">Ver na Hotmart <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+
+          <div class="ebook-card">
+            <div class="ebook-cover">
+              <img loading="lazy" src="/assets/images/ebook-revisao-sistematica.jpg" alt="Guia de Revisão Sistemática e Meta-análise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <div class="ebook-cover-label">Guia de Revisão Sistemática e Meta-análise</div>
+            </div>
+            <div class="ebook-body">
+              <div class="ebook-cat">Revisão Sistemática</div>
+              <div class="ebook-title">Revisão Sistemática e Meta-análise</div>
+              <div class="ebook-desc">Passo a passo para conduzir buscas bibliográficas, aplicar critérios PRISMA e interpretar forest plots.</div>
+              <a href="#" class="ebook-cta">Ver na Hotmart <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="slider-btn" id="ebookNext" aria-label="Próximo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="ebook-slider-dots" id="ebookDots"></div>
+  </div>
+</section>
+
+<script>
+// ── Generic slider factory ──
+function initSlider(opts: {
+  trackId: string; prevId: string; nextId: string; dotsId: string;
+  dotClass: string; perView: (vw: number) => number;
+}) {
+  const track = document.getElementById(opts.trackId) as HTMLElement | null;
+  const prevBtn = document.getElementById(opts.prevId) as HTMLButtonElement | null;
+  const nextBtn = document.getElementById(opts.nextId) as HTMLButtonElement | null;
+  const dotsEl = document.getElementById(opts.dotsId);
+  if (!track) return;
+
+  const cards = track.children;
+  let current = 0;
+
+  function perView() {
+    return opts.perView(window.innerWidth);
+  }
+  function maxIdx() { return Math.max(0, cards.length - perView()); }
+  function buildDots() {
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    const total = maxIdx() + 1;
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('div');
+      d.className = opts.dotClass + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    }
+  }
+  function updateDots() {
+    if (!dotsEl) return;
+    const dots = dotsEl.querySelectorAll('.' + opts.dotClass.split(' ')[0]);
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  function goTo(idx: number) {
+    current = Math.max(0, Math.min(idx, maxIdx()));
+    const cardWidth = (cards[0] as HTMLElement).offsetWidth + 20;
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
+    if (prevBtn) prevBtn.disabled = current === 0;
+    if (nextBtn) nextBtn.disabled = current >= maxIdx();
+    updateDots();
+  }
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+  let touchStartX = 0;
+  track.addEventListener('touchstart', (e: TouchEvent) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', (e: TouchEvent) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
+  buildDots();
+  goTo(0);
+  window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, maxIdx())); });
+}
+
+initSlider({
+  trackId: 'cursosTrack', prevId: 'cursosPrev', nextId: 'cursosNext', dotsId: 'cursosDots',
+  dotClass: 'slider-dot',
+  perView: (vw) => vw <= 768 ? 1 : 2
+});
+
+initSlider({
+  trackId: 'ebookTrack', prevId: 'ebookPrev', nextId: 'ebookNext', dotsId: 'ebookDots',
+  dotClass: 'ebook-slider-dot',
+  perView: (vw) => vw <= 480 ? 1 : vw <= 768 ? 2 : vw <= 900 ? 3 : 4
+});
+</script>
+
+</BaseLayout>

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const now = new Date();
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.date <= now))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' });
+}
+
+function readingTime(body: string) {
+  const words = body.split(/\s+/).length;
+  return Math.ceil(words / 200);
+}
+---
+<BaseLayout
+  title="Blog — Laboratório de Epidemiologia"
+  description="Artigos aprofundados sobre epidemiologia aplicada, metodologia de pesquisa e estatística. Baseados em evidências, publicados semanalmente."
+>
+
+<section class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
+      <circle cx="900" cy="300" r="350" stroke="#99ffcd" stroke-width="1" stroke-dasharray="6 6"/>
+      <circle cx="900" cy="300" r="250" stroke="#99ffcd" stroke-width="1" stroke-dasharray="6 6"/>
+      <circle cx="900" cy="300" r="150" stroke="#99ffcd" stroke-width="1"/>
+      <path d="M900 -50 A350 350 0 0 1 1250 300" stroke="#99ffcd" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Blog</span>
+    </div>
+    <div class="page-hero-eyebrow"><span></span> Conteúdo gratuito</div>
+    <h1>Artigos baseados em<br/><span class="mint">evidências reais.</span></h1>
+    <p class="page-hero-body">
+      Epidemiologia aplicada, metodologia de pesquisa e estatística. Todo conteúdo tem citações verificáveis — sem "estudos mostram" sem mostrar quais estudos.
+    </p>
+  </div>
+</section>
+
+<section class="blog sep" style="padding-top: 80px;">
+  <div class="container">
+    {posts.length === 0 ? (
+      <div style="text-align:center; padding: 80px 0; color: var(--muted);">
+        <p style="font-size:18px; margin-bottom: 12px;">Nenhum artigo publicado ainda.</p>
+        <p>Volte em breve — publicamos semanalmente.</p>
+      </div>
+    ) : (
+      <div class="blog-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+        {posts.map((post) => (
+          <a href={`/blog/${post.slug}/`} class="blog-card">
+            <div class="blog-thumb">
+              {post.data.cover
+                ? <img src={post.data.cover} alt={post.data.title} class="blog-thumb-img" />
+                : <div class="blog-thumb-inner">{post.data.tags[0] ?? 'LabEpi'}</div>
+              }
+              {post.data.tags[0] && <span class="blog-cat">{post.data.tags[0]}</span>}
+            </div>
+            <div class="blog-body">
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+              <div class="blog-meta">
+                <span>{readingTime(post.body)} min</span>
+                <span>·</span>
+                <span>{formatDate(post.data.date)}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.blog-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.blog-card:hover .blog-thumb-img {
+  transform: scale(1.04);
+}
+</style>
