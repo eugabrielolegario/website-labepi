@@ -47,7 +47,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="hero-trust">
           <div class="trust-item"><span class="trust-dot"></span> Triagem prévia para cada caso</div>
-          <div class="trust-item"><span class="trust-dot"></span> Retorno em até 48h</div>
+          <div class="trust-item"><span class="trust-dot"></span> Retornamos o mais breve possível</div>
           <div class="trust-item"><span class="trust-dot"></span> Vagas limitadas</div>
         </div>
       </div>
@@ -65,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="step-num">2</div>
           <div class="step-body">
             <h4>Avaliação do caso</h4>
-            <p>Analisamos cada solicitação individualmente e retornamos em até 48h.</p>
+            <p>Analisamos cada solicitação individualmente e retornamos assim que concluirmos a avaliação.</p>
           </div>
         </div>
         <div class="card-step">
@@ -83,10 +83,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
         <div class="card-footer">
-          <p>Pagamento via <strong>PIX ou cartão</strong> · Confirmado após triagem</p>
+          <p>Sem compromisso nessa etapa · <strong>Confirmado após triagem</strong></p>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ── MODALIDADES ── -->
+<section class="modalidades sep">
+  <div class="container">
+    <div class="modalidades-header">
+      <div class="section-tag">Modalidades de consultoria</div>
+      <h2 class="section-title">
+        Dois tipos de suporte,<br/><span class="mint">para momentos diferentes.</span>
+      </h2>
+      <p>Antes de solicitar, identifique qual modalidade se aplica ao seu caso. Em ambas, o LabEpi analisa cada solicitação individualmente antes de aceitar — nem todo caso será assumido.</p>
+    </div>
+
+    <div class="modalidades-grid">
+      <div class="modalidade-card">
+        <div class="modalidade-tag">Para quem quer ingressar na pós</div>
+        <h3>Consultoria para Pós-Graduação</h3>
+        <p>Para quem está considerando ingressar no mestrado ou doutorado e quer entender se seu perfil e sua ideia de pesquisa têm viabilidade real. Avaliamos o alinhamento entre sua trajetória, a área de interesse e os requisitos metodológicos do nível almejado.</p>
+        <ul class="modalidade-list">
+          <li>Avaliação de perfil e trajetória acadêmica</li>
+          <li>Viabilidade da ideia de pesquisa</li>
+          <li>Alinhamento com linhas de pesquisa e programas</li>
+          <li>Orientação sobre próximos passos concretos</li>
+        </ul>
+        <div class="modalidade-triagem">
+          <p>O LabEpi avalia cada solicitação antes de aceitar. O processo de triagem existe para garantir que possamos ajudar de forma efetiva — nem toda solicitação será assumida.</p>
+        </div>
+      </div>
+
+      <div class="modalidade-card">
+        <div class="modalidade-tag">Para projetos e estudos em andamento</div>
+        <h3>Consultoria Metodológica</h3>
+        <p>Para pesquisadores com projeto ou estudo em desenvolvimento que precisam de avaliação e correção metodológica. Indicada para quem está próximo de qualificação, defesa ou submissão e identificou — ou suspeita de — falhas na metodologia.</p>
+        <ul class="modalidade-list">
+          <li>Revisão de delineamento e critérios do estudo</li>
+          <li>Análise estatística aplicada ao seu caso</li>
+          <li>Alinhamento com padrões de periódicos de referência</li>
+          <li>Suporte pós-sessão por e-mail</li>
+        </ul>
+        <div class="modalidade-triagem">
+          <p>O LabEpi avalia cada solicitação antes de aceitar. O processo de triagem existe para garantir que possamos ajudar de forma efetiva — nem toda solicitação será assumida.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -179,9 +224,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div>
         <div class="pricing-card">
           <div class="pricing-glow" aria-hidden="true"></div>
-          <div class="pricing-eyebrow">Investimento</div>
-          <div class="pricing-val"><span>a partir de</span><br/>R$ 500</div>
-          <div class="pricing-from">O valor final é definido após a triagem, de acordo com o escopo do projeto.</div>
+          <div class="pricing-eyebrow">Detalhes da sessão</div>
+          <div class="pricing-from">O valor é definido após a triagem, de acordo com o escopo do projeto.</div>
           <div class="pricing-divider"></div>
           <ul class="pricing-includes">
             <li>Sessão individual com epidemiologista do LabEpi</li>
@@ -193,7 +237,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <a href="#triagem" class="btn-primary" style="width:100%;justify-content:center;">
             Solicitar triagem gratuita
           </a>
-          <p class="pricing-note">Vagas limitadas · Confirmação em até 48h<br/>Pagamento via PIX ou cartão após aprovação</p>
+          <p class="pricing-note">Vagas limitadas · Valor definido após triagem<br/>Pagamento via PIX ou cartão após aprovação</p>
         </div>
       </div>
     </div>
@@ -205,8 +249,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="container">
     <div class="cf-header">
       <div class="section-tag">Processo</div>
-      <h2 class="section-title">Do formulário à<br/><span class="mint">sessão em 48h.</span></h2>
-      <p>O processo foi desenhado para ser simples e eficiente — do formulário à sessão em menos de 48h.</p>
+      <h2 class="section-title">Do formulário à<br/><span class="mint">sessão agendada.</span></h2>
+      <p>O processo foi desenhado para ser simples e eficiente — do formulário de triagem até a sessão com o especialista.</p>
     </div>
 
     <div class="cf-steps">
@@ -218,7 +262,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="cf-step active">
         <div class="cf-step-num">2</div>
         <h4>Avaliamos e retornamos</h4>
-        <p>Leitura atenta de cada formulário. Retorno em até 48h confirmando disponibilidade e escopo.</p>
+        <p>Leitura atenta de cada formulário. Retornamos assim que analisarmos sua solicitação, confirmando disponibilidade e escopo.</p>
       </div>
       <div class="cf-step">
         <div class="cf-step-num">3</div>
@@ -349,12 +393,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="section-tag">Formulário de triagem</div>
           <h2>
             Descreva seu projeto.<br/>
-            <span class="mint">Avaliamos em até 48h.</span>
+            <span class="mint">Entramos em contato assim que analisarmos.</span>
           </h2>
           <p>Não há compromisso financeiro nessa etapa. Preencha com o máximo de detalhe possível — quanto mais contexto, mais precisa será a avaliação e o escopo proposto.</p>
           <div class="hero-trust" style="border-top: none; padding-top: 0; margin-top: 8px;">
             <div class="trust-item"><span class="trust-dot"></span> Triagem gratuita</div>
-            <div class="trust-item"><span class="trust-dot"></span> Resposta em até 48h</div>
+            <div class="trust-item"><span class="trust-dot"></span> Retornamos o mais breve possível</div>
             <div class="trust-item"><span class="trust-dot"></span> Vagas limitadas</div>
           </div>
         </div>
@@ -389,7 +433,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             <button type="submit" class="form-btn">Enviar para avaliação →</button>
           </form>
-          <p class="form-micro">Sem spam. Seus dados não serão compartilhados. Retornamos em até 48h.</p>
+          <p class="form-micro">Sem spam. Seus dados não serão compartilhados. Retornamos o mais breve possível.</p>
         </div>
       </div>
     </div>
@@ -397,13 +441,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </section>
 
 <script>
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement as HTMLElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+// FAQ accordion — wrapped in astro:page-load so it re-runs after View Transitions
+document.addEventListener('astro:page-load', () => {
+  document.querySelectorAll('.faq-q').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement as HTMLElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
   });
 });
 </script>

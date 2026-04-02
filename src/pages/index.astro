@@ -1,5 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const now = new Date();
+const latestPosts = (await getCollection('blog', ({ data }) => !data.draft && data.date <= now))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' });
+}
+
+function readingTime(body: string) {
+  const words = body.split(/\s+/).length;
+  return Math.ceil(words / 200);
+}
 ---
 <BaseLayout title="Laboratório de Epidemiologia — Epidemiologia Aplicada no Brasil">
 
@@ -361,39 +376,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
     </div>
     <div class="blog-grid">
-      <a href="/blog/como-escolher-delineamento/" class="blog-card">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">Delineamento</div>
-          <span class="blog-cat">Delineamento</span>
-        </div>
-        <div class="blog-body">
-          <h3>Como escolher o delineamento certo para o seu estudo em 5 passos</h3>
-          <p>Transversal, coorte ou caso-controle? A escolha errada compromete todo o projeto. Veja o método para decidir com segurança.</p>
-          <div class="blog-meta"><span>8 min</span><span>·</span><span>Mar 2026</span></div>
-        </div>
-      </a>
-      <a href="/blog/qual-teste-estatistico-usar/" class="blog-card">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">Estatística</div>
-          <span class="blog-cat">Estatística</span>
-        </div>
-        <div class="blog-body">
-          <h3>Qual teste estatístico usar? O guia definitivo para pesquisadores em formação</h3>
-          <p>Qui-quadrado, Mann-Whitney, regressão logística — quando aplicar cada um e como interpretar os resultados.</p>
-          <div class="blog-meta"><span>12 min</span><span>·</span><span>Mar 2026</span></div>
-        </div>
-      </a>
-      <a href="/blog/primeiros-30-dias-mestrado/" class="blog-card">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">Pós-Graduação</div>
-          <span class="blog-cat">Pós-Graduação</span>
-        </div>
-        <div class="blog-body">
-          <h3>O que fazer nos primeiros 30 dias do mestrado para não se perder</h3>
-          <p>Aprovado no programa mas sem saber por onde começar? Este guia mostra as prioridades reais do primeiro trimestre.</p>
-          <div class="blog-meta"><span>10 min</span><span>·</span><span>Fev 2026</span></div>
-        </div>
-      </a>
+      {latestPosts.map((post) => (
+        <a href={`/blog/${post.slug}/`} class="blog-card">
+          <div class="blog-thumb">
+            {post.data.cover
+              ? <img src={post.data.cover} alt={post.data.title} />
+              : <div class="blog-thumb-inner">{post.data.tags[0] ?? 'LabEpi'}</div>
+            }
+            {post.data.tags[0] && <span class="blog-cat">{post.data.tags[0]}</span>}
+          </div>
+          <div class="blog-body">
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <div class="blog-meta">
+              <span>{readingTime(post.body)} min</span>
+              <span>·</span>
+              <span>{formatDate(post.data.date)}</span>
+            </div>
+          </div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
@@ -545,7 +547,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="ebook-card">
             <div class="ebook-cover">
-              <img loading="lazy" src="/assets/images/ebook-epidemiologia.jpg" alt="Guia de Epidemiologia Aplicada" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" src="/assets/images/ebookipsum.jpg" alt="Guia de Epidemiologia Aplicada" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <div class="ebook-cover-label">Guia de Epidemiologia Aplicada</div>
             </div>
             <div class="ebook-body">
@@ -558,7 +560,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="ebook-card">
             <div class="ebook-cover">
-              <img loading="lazy" src="/assets/images/ebook-metodologia.jpg" alt="Manual de Metodologia de Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" src="/assets/images/ipsumbook.jpg" alt="Manual de Metodologia de Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <div class="ebook-cover-label">Manual de Metodologia de Pesquisa</div>
             </div>
             <div class="ebook-body">
@@ -571,7 +573,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="ebook-card">
             <div class="ebook-cover">
-              <img loading="lazy" src="/assets/images/ebook-estatistica.jpg" alt="Estatística para Pesquisadores de Saúde" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" src="/assets/images/ipsumbook.jpg" alt="Estatística para Pesquisadores de Saúde" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <div class="ebook-cover-label">Estatística para Pesquisadores de Saúde</div>
             </div>
             <div class="ebook-body">
@@ -584,7 +586,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="ebook-card">
             <div class="ebook-cover">
-              <img loading="lazy" src="/assets/images/ebook-gbd.jpg" alt="Como Usar Dados do GBD na Sua Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" src="/assets/images/ipsumbook.jpg" alt="Como Usar Dados do GBD na Sua Pesquisa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <div class="ebook-cover-label">Como Usar Dados do GBD na Sua Pesquisa</div>
             </div>
             <div class="ebook-body">
@@ -597,7 +599,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="ebook-card">
             <div class="ebook-cover">
-              <img loading="lazy" src="/assets/images/ebook-revisao-sistematica.jpg" alt="Guia de Revisão Sistemática e Meta-análise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              <img loading="lazy" src="/assets/images/ipsumbook.jpg" alt="Guia de Revisão Sistemática e Meta-análise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               <div class="ebook-cover-label">Guia de Revisão Sistemática e Meta-análise</div>
             </div>
             <div class="ebook-body">

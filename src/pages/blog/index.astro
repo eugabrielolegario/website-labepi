@@ -58,7 +58,7 @@ function readingTime(body: string) {
           <a href={`/blog/${post.slug}/`} class="blog-card">
             <div class="blog-thumb">
               {post.data.cover
-                ? <img src={post.data.cover} alt={post.data.title} class="blog-thumb-img" />
+                ? <img src={post.data.cover} alt={post.data.title} />
                 : <div class="blog-thumb-inner">{post.data.tags[0] ?? 'LabEpi'}</div>
               }
               {post.data.tags[0] && <span class="blog-cat">{post.data.tags[0]}</span>}
@@ -81,16 +81,3 @@ function readingTime(body: string) {
 
 </BaseLayout>
 
-<style>
-.blog-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.4s ease;
-}
-.blog-card:hover .blog-thumb-img {
-  transform: scale(1.04);
-}
-</style>

@@ -243,7 +243,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="equipe-grid">
       <div class="membro-card">
         <div class="membro-foto">
-          <div class="membro-foto-initial">L</div>
+          <img src="/assets/images/lucas-santos.jpg" alt="Lucas Santos" />
           <div class="membro-foto-deco"></div>
         </div>
         <div class="membro-body">
@@ -260,7 +260,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="membro-card">
         <div class="membro-foto">
-          <div class="membro-foto-initial">O</div>
+          <img src="/assets/images/gabrielolegario.jpeg" alt="Gabriel Olegário" />
           <div class="membro-foto-deco"></div>
         </div>
         <div class="membro-body">
@@ -277,11 +277,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="membro-card">
         <div class="membro-foto">
-          <div class="membro-foto-initial">A</div>
+          <img src="/assets/images/andresoares.jpeg" alt="André Soares" />
           <div class="membro-foto-deco"></div>
         </div>
         <div class="membro-body">
-          <h3>André</h3>
+          <h3>André Soares</h3>
           <div class="membro-role">Cofundador &amp; Produção Visual</div>
           <p class="membro-bio">Responsável pela identidade visual e produção audiovisual do LabEpi. Garante que cada material, do slide de aula ao vídeo publicado, comunique com clareza e coerência visual.</p>
           <div class="membro-tags">
@@ -345,23 +345,139 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="cta-final sep">
   <div class="container">
     <div class="cta-final-inner">
+      <canvas class="formulas-canvas" aria-hidden="true"></canvas>
       <div class="cta-final-glow" aria-hidden="true"></div>
 
-      <div class="cta-final-eyebrow">Conheça nosso trabalho</div>
+      <div class="cta-final-content">
+        <div class="cta-final-eyebrow">Conheça nosso trabalho</div>
 
-      <h2>
-        O LabEpi é construído<br/>
-        <span class="mint">aula a aula, artigo a artigo.</span>
-      </h2>
+        <h2>
+          O LabEpi é construído<br/>
+          <span class="mint">aula a aula, artigo a artigo.</span>
+        </h2>
 
-      <p>Explore o blog, acompanhe os conteúdos que publicamos semanalmente ou entre em contato se quiser conversar sobre pesquisa.</p>
+        <p>Explore o blog, acompanhe os conteúdos que publicamos semanalmente ou entre em contato se quiser conversar sobre pesquisa.</p>
 
-      <div class="cta-actions">
-        <a href="/blog/" class="btn-primary">Ver o Blog</a>
-        <a href="/consultoria/" class="btn-secondary">Fale com a gente →</a>
+        <div class="cta-actions">
+          <a href="/blog/" class="btn-primary">Ver o Blog</a>
+          <a href="/consultoria/" class="btn-secondary">Fale com a gente →</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 </BaseLayout>
+
+<style>
+.formulas-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.cta-final-content {
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+<script>
+// Canvas animation — lifecycle managed for Astro View Transitions
+let _canvasRaf = 0;
+let _canvasResize: (() => void) | null = null;
+
+// Clean up before page swap to avoid orphaned RAF loops
+document.addEventListener('astro:before-swap', () => {
+  cancelAnimationFrame(_canvasRaf);
+  if (_canvasResize) { window.removeEventListener('resize', _canvasResize); _canvasResize = null; }
+});
+
+document.addEventListener('astro:page-load', () => {
+  const canvas = document.querySelector<HTMLCanvasElement>('.formulas-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d')!;
+
+  const formulas = [
+    'p < 0.05', 'χ²', 'μ ± σ', 'β₀ + β₁x', 'OR = 2.3',
+    '95% IC', 'HR = 1.7', 'H₀: μ = 0', '∑xᵢ/n', 'RR = 0.8',
+    'r = 0.94', 'α = 0.05', 'logit(p)', 'e^β', 'N(0,1)',
+    'df = n−1', 'IC 95%', 'σ²', 'Δ = β', 'p-valor',
+  ];
+
+  type Particle = {
+    text: string; x: number; y: number;
+    vx: number; vy: number;
+    opacity: number; size: number;
+    life: number; maxLife: number;
+  };
+
+  let particles: Particle[] = [];
+  let W = 0, H = 0;
+
+  function resize() {
+    const rect = canvas.parentElement!.getBoundingClientRect();
+    W = canvas.width = rect.width;
+    H = canvas.height = rect.height;
+  }
+
+  function spawn(randomY = false): Particle {
+    return {
+      text: formulas[Math.floor(Math.random() * formulas.length)],
+      x: Math.random() * W,
+      y: randomY ? Math.random() * H : H + 20,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: -(0.25 + Math.random() * 0.35),
+      opacity: 0.05 + Math.random() * 0.09,
+      size: 11 + Math.random() * 5,
+      life: 0,
+      maxLife: 500 + Math.random() * 400,
+    };
+  }
+
+  function init() {
+    particles = Array.from({ length: 20 }, () => {
+      const p = spawn(true);
+      p.life = Math.random() * p.maxLife;
+      return p;
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    if (particles.length < 20 && Math.random() < 0.015) {
+      particles.push(spawn());
+    }
+
+    particles = particles.filter((p) => {
+      p.life++;
+      p.x += p.vx;
+      p.y += p.vy;
+
+      const fadeIn  = Math.min(1, p.life / 80);
+      const fadeOut = Math.min(1, (p.maxLife - p.life) / 80);
+      const alpha   = p.opacity * fadeIn * fadeOut;
+
+      ctx.save();
+      ctx.font = `${p.size}px monospace`;
+      ctx.fillStyle = `rgba(153,255,205,${alpha})`;
+      ctx.fillText(p.text, p.x, p.y);
+      ctx.restore();
+
+      return p.life < p.maxLife && p.y > -30;
+    });
+
+    _canvasRaf = requestAnimationFrame(draw);
+  }
+
+  resize();
+  init();
+  draw();
+
+  _canvasResize = () => { cancelAnimationFrame(_canvasRaf); resize(); init(); _canvasRaf = requestAnimationFrame(draw); };
+  window.addEventListener('resize', _canvasResize);
+});
+</script>

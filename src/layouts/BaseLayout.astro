@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -17,13 +18,103 @@ const { title, description = 'Epidemiologia aplicada para pesquisadores que quer
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{title}</title>
   <meta name="description" content={description}/>
+  <ViewTransitions />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 </head>
 <body>
   <Header />
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
   <slot />
   <Footer />
 </body>
 </html>
+
+<script>
+document.addEventListener('astro:page-load', () => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Scroll reveals via IntersectionObserver ──────────────────
+  if (!reduced) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        el.classList.add('visible');
+        // Remove .reveal after transition so hover effects work normally
+        el.addEventListener('transitionend', () => el.classList.remove('reveal'), { once: true });
+        io.unobserve(el);
+      }),
+      { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+    );
+
+    // Stagger groups — each direct child reveals with an incremental delay
+    [
+      '.hub-grid', '.diff-grid', '.pq-grid', '.blog-grid',
+      '.missao-numbers', '.cf-steps', '.triggers-grid',
+      '.modalidades-grid', '.dep-grid', '.faq-list',
+      '.entrega-list', '.cred-list', '.cred-items',
+    ].forEach(sel => {
+      document.querySelectorAll(sel).forEach(parent => {
+        Array.from(parent.children).forEach((child, i) => {
+          const el = child as HTMLElement;
+          if (el.classList.contains('reveal')) return;
+          el.classList.add('reveal');
+          el.style.setProperty('--stagger', `${i * 90}ms`);
+          io.observe(el);
+        });
+      });
+    });
+
+    // Single reveals — whole blocks, skip anything inside .hero
+    [
+      '.missao-content', '.autoridade-grid', '.lead-grid',
+      '.consultoria-grid', '.diff-header', '.para-quem-header',
+      '.cf-header', '.dep-header', '.blog-header',
+      '.entregaveis-grid', '.cta-text', '.cta-form-card',
+      '.hub-header', '.modalidades-header', '.foto-frame',
+      '.nao-para-voce', '.pricing-card', '.pdf-cover', '.lead-content',
+    ].forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (el.closest('.hero') || (el as HTMLElement).classList.contains('reveal')) return;
+        (el as HTMLElement).classList.add('reveal');
+        io.observe(el);
+      });
+    });
+  }
+
+  // ── Animated counters ─────────────────────────────────────────
+  const cio = new IntersectionObserver(
+    (entries) => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      cio.unobserve(el);
+      if (reduced) return;
+
+      const orig = el.textContent?.trim() ?? '';
+      const m = orig.match(/^([\d,.]+)/);
+      if (!m) return;
+
+      const num = parseFloat(m[1].replace(',', '.'));
+      const isDecimal = m[1].includes(',');
+      const suffix = orig.slice(m[1].length);
+      const t0 = performance.now();
+
+      const tick = (now: number) => {
+        const p = Math.min((now - t0) / 1400, 1);
+        const v = num * (1 - Math.pow(1 - p, 3));
+        el.textContent = (isDecimal
+          ? v.toFixed(1).replace('.', ',')
+          : Math.round(v).toString()) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = orig;
+      };
+      requestAnimationFrame(tick);
+    }),
+    { threshold: 0.5 }
+  );
+
+  document.querySelectorAll('.num-val, .hero-stat-val').forEach(el => cio.observe(el));
+});
+</script>

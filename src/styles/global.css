@@ -165,14 +165,12 @@ body::after {
 /* ─── HEADER ─── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(7,9,38,0.92);
-  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  background: #070926;
   border-bottom: 1px solid rgba(153,255,205,0.08);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 68px; padding: 0 40px;
-  max-width: 1300px; margin: 0 auto;
+  width: 100%; max-width: none; height: 68px; padding: 0 40px;
 }
 /* LOGO */
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -543,6 +541,11 @@ nav a:hover { color: var(--white); }
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
 }
+.blog-thumb img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  display: block; transition: transform 0.4s ease;
+}
+.blog-card:hover .blog-thumb img { transform: scale(1.04); }
 .blog-thumb-inner {
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
   font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
@@ -1137,6 +1140,10 @@ nav a:hover, nav a.active { color: var(--white); }
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
   position: relative; overflow: hidden;
 }
+.membro-foto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+}
 .membro-foto-initial {
   width: 72px; height: 72px; border-radius: 50%;
   background: var(--mint-dim); border: 2px solid var(--border-mint);
@@ -1209,7 +1216,7 @@ nav a:hover, nav a.active { color: var(--white); }
   padding: 100px 0; position: relative; overflow: hidden;
 }
 .cta-final-inner {
-  background: linear-gradient(135deg, var(--navy-light) 0%, #1e2380 100%);
+  background: linear-gradient(135deg, #070a2e 0%, #0e1255 100%);
   border: 1px solid var(--border-mint); border-radius: 24px;
   padding: 72px 64px; text-align: center; position: relative; overflow: hidden;
 }
@@ -1401,6 +1408,7 @@ nav a:hover, nav a.active { color: var(--white); }
 .depoimentos { background: radial-gradient(ellipse 70% 50% at 40% 110%, rgba(140,180,255,0.06) 0%, transparent 55%), #070926; }
 .faq { background: radial-gradient(ellipse 65% 60% at 80% 20%, rgba(153,255,205,0.07) 0%, transparent 55%), #070926; }
 .cta-section { background: radial-gradient(ellipse 70% 80% at 35% 50%, rgba(153,255,205,0.11) 0%, transparent 55%), #070926; }
+.modalidades { background: radial-gradient(ellipse 65% 55% at 50% 20%, rgba(140,180,255,0.07) 0%, transparent 55%), #070926; }
 
 /* ─── HERO ─── */
 .hero {
@@ -1516,6 +1524,42 @@ nav a:hover, nav a.active { color: var(--white); }
 .nao-icon { color: var(--muted); flex-shrink: 0; font-size: 18px; }
 .nao-para-voce p { font-size: 14px; color: var(--muted); line-height: 1.55; }
 .nao-para-voce strong { color: var(--white-70); }
+
+/* ─── MODALIDADES ─── */
+.modalidades { padding: 100px 0; }
+.modalidades-header { max-width: 680px; margin-bottom: 52px; }
+.modalidades-header .section-title { margin-bottom: 16px; }
+.modalidades-header p { font-size: 16px; color: var(--body-text); line-height: 1.7; }
+.modalidades-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.modalidade-card {
+  background: var(--white-04); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 40px 36px;
+  display: flex; flex-direction: column; gap: 20px;
+  transition: border-color 0.25s;
+}
+.modalidade-card:hover { border-color: var(--border-mint); }
+.modalidade-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mint);
+  background: var(--mint-dim); border: 1px solid var(--border-mint);
+  border-radius: 100px; padding: 4px 14px; width: fit-content;
+}
+.modalidade-card h3 { font-size: 22px; font-weight: 800; color: var(--white); line-height: 1.15; }
+.modalidade-card > p { font-size: 14px; color: var(--body-text); line-height: 1.7; }
+.modalidade-list {
+  list-style: none; display: flex; flex-direction: column; gap: 8px;
+  padding: 0; margin: 0;
+}
+.modalidade-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--white-90); line-height: 1.5;
+}
+.modalidade-list li::before { content: '✓'; color: var(--mint); font-weight: 800; flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+.modalidade-triagem {
+  background: rgba(153,255,205,0.04); border: 1px solid rgba(153,255,205,0.15);
+  border-radius: var(--radius-sm); padding: 14px 18px; margin-top: auto;
+}
+.modalidade-triagem p { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
 /* ─── ENTREGÁVEIS ─── */
 .entregaveis-sec { padding: 100px 0; }
@@ -1862,14 +1906,14 @@ body { background: radial-gradient(ellipse 70% 60% at 70% 20%, rgba(153,255,205,
 /* ─── HEADER ─── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(7,9,38,0.92);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(153,255,205,0.08);
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
   height: 68px; padding: 0 40px;
   max-width: 1300px; margin: 0 auto;
-  background: rgba(16,19,92,0.88);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
 }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-img-wrap img { height: 36px; width: auto; display: block; }
@@ -2060,4 +2104,102 @@ footer.sep {
   .header-inner { padding: 0 20px; }
   .footer-grid { grid-template-columns: 1fr; }
   .ty-actions { flex-direction: column; align-items: stretch; text-align: center; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL ANIMATION SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+
+/* ─── Hero entrance: index (.hero-center) ─── */
+.hero .hero-center > * {
+  animation: fadeUp 0.7s ease both;
+}
+/* animation-delays already defined globally:
+   .hero-eyebrow → 0.1s  |  .hero h1 → 0.25s
+   .hero-body    → 0.4s  |  .hero-actions → 0.5s  */
+.hero .hero-center .hero-lancet { animation-delay: 0.47s; }
+.hero .hero-center .hero-micro  { animation-delay: 0.62s; }
+
+/* ─── Consultoria hero: right-side card entrance ─── */
+.hero .hero-card {
+  animation: fadeUp 0.75s ease both;
+  animation-delay: 0.28s;
+}
+
+/* ─── Scroll reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease var(--stagger, 0ms),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Nav underline on hover ─── */
+nav a { position: relative; }
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--mint);
+  border-radius: 2px;
+  transition: width 0.22s ease;
+}
+nav a:hover::after { width: 100%; }
+
+/* ─── Button hover: scale elevation ─── */
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 36px rgba(153,255,205,0.38);
+}
+
+/* ─── Input / select focus glow ─── */
+.lead-input:focus,
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--border-mint) !important;
+  box-shadow: 0 0 0 3px rgba(153,255,205,0.09);
+  outline: none;
+}
+
+/* ─── Scroll progress bar ─── */
+.scroll-progress-bar {
+  position: fixed;
+  top: 68px; left: 0; right: 0;
+  height: 2px; z-index: 99;
+  background: linear-gradient(90deg, var(--mint), rgba(140,180,255,0.9));
+  transform-origin: left;
+  transform: scaleX(0); /* hidden by default; animated via @supports below */
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress-bar {
+    animation: scrollProgress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes scrollProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ─── prefers-reduced-motion override ─── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+  .hero .hero-center > *,
+  .hero .hero-card {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .scroll-progress-bar { display: none; }
 }
