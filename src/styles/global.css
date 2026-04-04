@@ -1682,11 +1682,14 @@ nav a:hover, nav a.active { color: var(--white); }
 .dep-card {
   background: var(--white-04); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 32px 28px; transition: all 0.2s;
+  display: flex; flex-direction: column; gap: 20px;
 }
 .dep-card:hover { border-color: var(--border-mint); }
 .dep-stars { color: var(--amber); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
 .dep-quote { font-size: 15px; color: var(--white-90); line-height: 1.65; margin-bottom: 24px; font-style: italic; }
-.dep-author { display: flex; align-items: center; gap: 12px; }
+.dep-author { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+.dep-author span { font-size: 13px; color: var(--muted); }
+.dep-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mint); background: var(--mint-dim); border: 1px solid var(--border-mint); border-radius: 4px; padding: 3px 8px; }
 .dep-avatar {
   width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
   background: var(--mint-dim); border: 1px solid var(--border-mint);
@@ -2202,4 +2205,157 @@ nav a:hover::after { width: 100%; }
     opacity: 1 !important;
   }
   .scroll-progress-bar { display: none; }
+}
+
+/* ─── MAILERLITE EMBED — DARK THEME OVERRIDES ─── */
+
+/* Container: full width, sem fundo branco */
+.ml-embedded { width: 100%; }
+.ml-form-embedContainer { width: 100% !important; }
+.ml-form-embedWrapper,
+.ml-form-embedWrapper.embedForm,
+.ml-form-embedWrapper.embedDefault {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+/* Padding interno zerado — o card pai já tem padding */
+.ml-form-embedBody,
+.ml-form-successBody {
+  padding: 0 !important;
+}
+
+/* Título e descrição do form (quando presentes) */
+.ml-form-embedContent h4 {
+  color: var(--white) !important;
+  font-family: var(--font) !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  margin-bottom: 6px !important;
+}
+.ml-form-embedContent p {
+  color: var(--muted) !important;
+  font-family: var(--font) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Labels */
+.ml-block-form .ml-field-group label {
+  color: var(--white-70) !important;
+  font-family: var(--font) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+}
+
+/* Inputs e textareas */
+.ml-form-fieldRow input[type="text"],
+.ml-form-fieldRow input[type="email"],
+.ml-form-fieldRow textarea,
+.ml-form-horizontalRow input[type="text"],
+.ml-form-horizontalRow input[type="email"] {
+  background: var(--white-08) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--white) !important;
+  font-family: var(--font) !important;
+  font-size: 14px !important;
+  padding: 13px 16px !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+.ml-form-fieldRow input::placeholder,
+.ml-form-horizontalRow input::placeholder {
+  color: var(--muted) !important;
+}
+.ml-form-fieldRow input:focus,
+.ml-form-horizontalRow input:focus,
+.ml-form-fieldRow textarea:focus {
+  border-color: var(--border-mint) !important;
+  box-shadow: 0 0 0 3px rgba(153,255,205,0.09) !important;
+  outline: none !important;
+}
+
+/* Botão de submit */
+.ml-form-embedSubmit button.primary {
+  background: var(--mint) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--navy) !important;
+  font-family: var(--font) !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  padding: 16px !important;
+  letter-spacing: 0 !important;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s !important;
+  cursor: pointer !important;
+}
+.ml-form-embedSubmit button.primary:hover {
+  background: #afffda !important;
+  box-shadow: 0 8px 28px rgba(153,255,205,0.3) !important;
+  transform: translateY(-2px) !important;
+}
+.ml-form-embedSubmit { margin-bottom: 0 !important; }
+
+/* Checkbox de consentimento */
+.ml-form-checkboxRow .label-description,
+.ml-form-checkboxRow .label-description p {
+  color: var(--white) !important;
+  font-family: var(--font) !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+.ml-form-checkboxRow .label-description::before {
+  background-color: var(--white-08) !important;
+  border-color: var(--border) !important;
+}
+[class*="ml-form-embedContainer"] .ml-form-checkboxRow input[type=checkbox]:checked ~ .label-description::before {
+  background-color: var(--mint) !important;
+  border-color: var(--mint) !important;
+}
+
+/* Grupos de interesse (checkboxes de cursos / modalidades) */
+.ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description {
+  color: var(--white-90) !important;
+  font-family: var(--font) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+.ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before {
+  background-color: var(--white-08) !important;
+  border-color: var(--border) !important;
+}
+[class*="ml-form-embedContainer"] .ml-form-interestGroupsRow input[type=checkbox]:checked ~ .label-description::before {
+  background-color: var(--mint) !important;
+  border-color: var(--mint) !important;
+}
+
+/* Mensagem de sucesso */
+.ml-form-successBody .ml-form-successContent h4 {
+  color: var(--mint) !important;
+  font-family: var(--font) !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+}
+.ml-form-successBody .ml-form-successContent p {
+  color: var(--white-70) !important;
+  font-family: var(--font) !important;
+  font-size: 14px !important;
+}
+
+/* Erro de validação */
+.ml-error input,
+.ml-error textarea,
+.ml-error select {
+  border-color: #ff6b6b !important;
+}
+.ml-error .label-description,
+.ml-error .label-description p,
+.ml-error label:first-child {
+  color: #ff6b6b !important;
 }

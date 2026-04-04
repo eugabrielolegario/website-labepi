@@ -2,8 +2,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
-
 interface Props {
   title: string;
   description?: string;
@@ -18,10 +16,17 @@ const { title, description = 'Epidemiologia aplicada para pesquisadores que quer
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{title}</title>
   <meta name="description" content={description}/>
-  <ViewTransitions />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LN97ZZ2BR0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LN97ZZ2BR0');
+  </script>
 </head>
 <body>
   <Header />
@@ -72,9 +77,9 @@ document.addEventListener('astro:page-load', () => {
       '.missao-content', '.autoridade-grid', '.lead-grid',
       '.consultoria-grid', '.diff-header', '.para-quem-header',
       '.cf-header', '.dep-header', '.blog-header',
-      '.entregaveis-grid', '.cta-text', '.cta-form-card',
+      '.entregaveis-grid', '.cta-text',
       '.hub-header', '.modalidades-header', '.foto-frame',
-      '.nao-para-voce', '.pricing-card', '.pdf-cover', '.lead-content',
+      '.nao-para-voce', '.pricing-card', '.pdf-cover',
     ].forEach(sel => {
       document.querySelectorAll(sel).forEach(el => {
         if (el.closest('.hero') || (el as HTMLElement).classList.contains('reveal')) return;
@@ -116,5 +121,13 @@ document.addEventListener('astro:page-load', () => {
   );
 
   document.querySelectorAll('.num-val, .hero-stat-val').forEach(el => cio.observe(el));
+
+});
+
+// Re-initialize MailerLite forms after every View Transitions navigation
+document.addEventListener('astro:after-swap', () => {
+  if (typeof (window as any).ml === 'function') {
+    (window as any).ml('account', '2228964');
+  }
 });
 </script>
